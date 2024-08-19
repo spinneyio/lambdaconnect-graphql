@@ -1,0 +1,46 @@
+[{:db/id "Mono (1 month)"
+  :RASubscriptionProduct/buyable true
+  :RASubscriptionProduct/name "Mono"
+  :RASubscriptionProduct/maxRestaurants 1
+  :RASubscriptionProduct/period 1
+  :RASubscriptionProduct/predefined true
+  :RASubscriptionProduct/prices ["10 PLN"]}
+ {:db/id "Mono (1 year)"
+  :RASubscriptionProduct/buyable true
+  :RASubscriptionProduct/name "Mono"
+  :RASubscriptionProduct/maxRestaurants 1
+  :RASubscriptionProduct/period 12
+  :RASubscriptionProduct/predefined true
+  :RASubscriptionProduct/prices ["110 PLN"]}
+ {:db/id "Standard (1 month)"
+  :RASubscriptionProduct/buyable true
+  :RASubscriptionProduct/name "Standard"
+  :RASubscriptionProduct/maxRestaurants 3
+  :RASubscriptionProduct/period 1
+  :RASubscriptionProduct/predefined true
+  :RASubscriptionProduct/prices ["25 PLN"]
+  :RASubscriptionProduct/upgradesFrom ["Mono (1 month)"]}
+ {:db/id "Standard (1 year)"
+  :RASubscriptionProduct/buyable true
+  :RASubscriptionProduct/name "Standard"
+  :RASubscriptionProduct/maxRestaurants 3
+  :RASubscriptionProduct/period 12
+  :RASubscriptionProduct/predefined true
+  :RASubscriptionProduct/prices ["275 PLN"]
+  :RASubscriptionProduct/upgradesFrom ["Mono (1 year)"]}
+ {:db/id "Pro (1 month)"
+  :RASubscriptionProduct/buyable true
+  :RASubscriptionProduct/name "Pro"
+  :RASubscriptionProduct/maxRestaurants 10
+  :RASubscriptionProduct/period 1
+  :RASubscriptionProduct/predefined true
+  :RASubscriptionProduct/prices ["60 PLN"]
+  :RASubscriptionProduct/upgradesFrom ["Mono (1 month)" "Standard (1 month)"]}
+ {:db/id "Pro (1 year)"
+  :RASubscriptionProduct/buyable true
+  :RASubscriptionProduct/name "Pro"
+  :RASubscriptionProduct/maxRestaurants 10
+  :RASubscriptionProduct/period 12
+  :RASubscriptionProduct/predefined true
+  :RASubscriptionProduct/prices ["660 PLN"]
+  :RASubscriptionProduct/upgradesFrom ["Mono (1 year)" "Standard (1 year)"]}]

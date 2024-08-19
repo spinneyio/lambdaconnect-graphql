@@ -1,0 +1,30 @@
+[{:db/id "10 PLN"
+  :RAPrice/amount 1000
+  :RAPrice/taxPercentage 23.0
+  :RAPrice/taxAmount 230
+  :RAPrice/currency "PLN"}
+ {:db/id "110 PLN"
+  :RAPrice/amount 11000
+  :RAPrice/taxPercentage 23.0
+  :RAPrice/taxAmount 2530
+  :RAPrice/currency "PLN"}
+ {:db/id "25 PLN"
+  :RAPrice/amount 2500
+  :RAPrice/taxPercentage 23.0
+  :RAPrice/taxAmount 575
+  :RAPrice/currency "PLN"}
+ {:db/id "275 PLN"
+  :RAPrice/amount 27500
+  :RAPrice/taxPercentage 23.0
+  :RAPrice/taxAmount 6325
+  :RAPrice/currency "PLN"}
+ {:db/id "60 PLN"
+  :RAPrice/amount 6000
+  :RAPrice/taxPercentage 23.0
+  :RAPrice/taxAmount 1380
+  :RAPrice/currency "PLN"}
+ {:db/id "660 PLN"
+  :RAPrice/amount 66000
+  :RAPrice/taxPercentage 23.0
+  :RAPrice/taxAmount 15180
+  :RAPrice/currency "PLN"}]

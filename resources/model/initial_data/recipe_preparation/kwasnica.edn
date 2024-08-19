@@ -1,0 +1,24 @@
+[{:RARecipePreparation/stepDescription
+  "Surowe żeberka opłukać i pokroić na części z 2 żebrami. Włożyć do dużego garnka, wlać zimną wodę, dodać sól i zagotować."
+  :RARecipePreparation/stepNo 1
+  :RARecipePreparation/recipe "Kwaśnica"}
+ {:RARecipePreparation/stepDescription
+  "Zszumować, zmniejszyć ogień i gotować przez ok. 45 minut pod przykryciem."
+  :RARecipePreparation/stepNo 2
+  :RARecipePreparation/recipe "Kwaśnica"}
+ {:RARecipePreparation/stepDescription
+  "	Wędzone żeberka podzielić na porcje z jednym lub dwoma żeberkami. Dodać do wywaru. "
+  :RARecipePreparation/stepNo 3
+  :RARecipePreparation/recipe "Kwaśnica"}
+ {:RARecipePreparation/stepDescription
+  "Gotować przez około 20 minut pod przykryciem."
+  :RARecipePreparation/stepNo 4
+  :RARecipePreparation/recipe "Kwaśnica"}
+ {:RARecipePreparation/stepDescription
+  "Dodać obrane i pokrojone w kosteczkę ziemniaki i gotować przez ok. 20 minut. Kapustę kiszoną odcisnąć i posiekać, dodać do garnka z zupą. "
+  :RARecipePreparation/stepNo 5
+  :RARecipePreparation/recipe "Kwaśnica"}
+ {:RARecipePreparation/stepDescription
+  "Przykryć i gotować przez około 30 minut aż kapusta i mięso będą miękkie."
+  :RARecipePreparation/stepNo 6
+  :RARecipePreparation/recipe "Kwaśnica"}]

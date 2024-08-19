@@ -1,0 +1,6 @@
+({:RARestaurant/unitSystem "metric",
+  :RARestaurant/name "Restauracja Słoneczna",
+  :RARestaurant/owner "Jan",
+  :RARestaurant/subscriptionActive true,
+  :RARestaurant/requestedSubscriptionActive true,
+  :db/id "Restauracja Słoneczna"})

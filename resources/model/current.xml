@@ -1,0 +1,619 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="21H1222" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="RAAllergen" representedClassName="RAAllergen" syncable="YES" codeGenerationType="class">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" attributeType="String" maxValueString="100"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="ingredients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RAIngredient" inverseName="allergens" inverseEntity="RAIngredient">
+            <userInfo>
+                <entry key="docs" value="ingredients using an allergen"/>
+            </userInfo>
+        </relationship>
+        <relationship name="translations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RAAllergenTranslation" inverseName="allergen" inverseEntity="RAAllergenTranslation">
+            <userInfo>
+                <entry key="docs" value="avaiable translations of an ingredient's name"/>
+            </userInfo>
+        </relationship>
+    </entity>
+    <entity name="RAAllergenTranslation" representedClassName="RAAllergenTranslation" syncable="YES" codeGenerationType="class">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="translatedName" attributeType="String" maxValueString="100"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="allergen" maxCount="1" deletionRule="Nullify" destinationEntity="RAAllergen" inverseName="translations" inverseEntity="RAAllergen"/>
+        <relationship name="language" maxCount="1" deletionRule="Nullify" destinationEntity="RALanguage" inverseName="allergenTranslations" inverseEntity="RALanguage"/>
+    </entity>
+    <entity name="RABCGMatrixRecipeSnapshot" representedClassName="RABCGMatrixRecipeSnapshot" syncable="YES" codeGenerationType="class">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="foodCost" optional="YES" attributeType="Float" usesScalarValueType="YES">
+            <userInfo>
+                <entry key="docs" value="READ ONLY! Snapshot of RARecipe/foodCost."/>
+            </userInfo>
+        </attribute>
+        <attribute name="grossPrice" optional="YES" attributeType="Integer 32" minValueString="1" usesScalarValueType="YES">
+            <userInfo>
+                <entry key="docs" value="READ ONLY! Snapshot will not be created if grossPrice is not set in original recipe. A fixed-point number with precision of 2."/>
+            </userInfo>
+        </attribute>
+        <attribute name="numberOfPortionsSold" optional="YES" attributeType="Integer 32" minValueString="0" usesScalarValueType="YES">
+            <userInfo>
+                <entry key="docs" value="Creating an object without setting this value will import numberOfPortionsToSell from recipe. A fixed-point number with precision of 0."/>
+            </userInfo>
+        </attribute>
+        <attribute name="productionCost" optional="YES" attributeType="Float" usesScalarValueType="YES">
+            <userInfo>
+                <entry key="docs" value="READ ONLY! Snapshot of RARecipe/productionCost."/>
+            </userInfo>
+        </attribute>
+        <attribute name="recipeName" optional="YES" attributeType="String">
+            <userInfo>
+                <entry key="docs" value="READ ONLY! Snapshot of RARecipe/name."/>
+            </userInfo>
+        </attribute>
+        <attribute name="relativePopularity" optional="YES" attributeType="Float" usesScalarValueType="YES">
+            <userInfo>
+                <entry key="docs" value="READ ONLY! Popularity of recipe relative to other recipes in simulation."/>
+            </userInfo>
+        </attribute>
+        <attribute name="relativeProfitability" optional="YES" attributeType="Float" usesScalarValueType="YES">
+            <userInfo>
+                <entry key="docs" value="READ ONLY! Profitability of recipe relative to other recipes in simulation."/>
+            </userInfo>
+        </attribute>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="vatPercentage" optional="YES" attributeType="Integer 32" minValueString="0" maxValueString="100" usesScalarValueType="YES">
+            <userInfo>
+                <entry key="docs" value="READ ONLY! Snapshot of RAVatPercentage/percentage."/>
+            </userInfo>
+        </attribute>
+        <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RARecipe" inverseName="recipeSnapshots" inverseEntity="RARecipe">
+            <userInfo>
+                <entry key="docs" value="Passing recipe is obligatory at the moment of creating snapshot. The recipe could be removed later."/>
+            </userInfo>
+        </relationship>
+        <relationship name="simulation" maxCount="1" deletionRule="Nullify" destinationEntity="RABCGMatrixSimulation" inverseName="recipeSnapshots" inverseEntity="RABCGMatrixSimulation"/>
+        <userInfo>
+            <entry key="docs" value="Snapshot of RARecipe containing data relevant in computing BCG matrix; editing original recipe will not change data here. To create this object, pass only recipe, simulation and optional numberOfPortionsProduced. Remaining fields will be filled based on recipe fields at the moment of creating this snapshot."/>
+        </userInfo>
+    </entity>
+    <entity name="RABCGMatrixSimulation" representedClassName="RABCGMatrixSimulation" syncable="YES" codeGenerationType="class">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="categoryName" optional="YES" attributeType="String">
+            <userInfo>
+                <entry key="docs" value="READ ONLY! Snapshot of category name at the moment of creating simulation."/>
+            </userInfo>
+        </attribute>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO">
+            <userInfo>
+                <entry key="docs" value="There must be startDate &lt;= endDate"/>
+            </userInfo>
+        </attribute>
+        <attribute name="name" attributeType="String" maxValueString="100"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO">
+            <userInfo>
+                <entry key="docs" value="There must be startDate &lt;= endDate"/>
+            </userInfo>
+        </attribute>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RACategory" inverseName="simulations" inverseEntity="RACategory">
+            <userInfo>
+                <entry key="docs" value="Passing category is obligatory at the moment of creating simulation. The category could be removed later. It is used to verify that all recipes used in simulation are from the same category."/>
+            </userInfo>
+        </relationship>
+        <relationship name="recipeSnapshots" toMany="YES" deletionRule="Nullify" destinationEntity="RABCGMatrixRecipeSnapshot" inverseName="simulation" inverseEntity="RABCGMatrixRecipeSnapshot"/>
+        <relationship name="restaurant" maxCount="1" deletionRule="Nullify" destinationEntity="RARestaurant" inverseName="simulations" inverseEntity="RARestaurant"/>
+    </entity>
+    <entity name="RACategory" representedClassName="RACategory" syncable="YES" codeGenerationType="class">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="archived" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" attributeType="String" maxValueString="100"/>
+        <attribute name="predefined" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="recipes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RARecipe" inverseName="categories" inverseEntity="RARecipe"/>
+        <relationship name="restaurant" maxCount="1" deletionRule="Nullify" destinationEntity="RARestaurant" inverseName="categories" inverseEntity="RARestaurant"/>
+        <relationship name="simulations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RABCGMatrixSimulation" inverseName="category" inverseEntity="RABCGMatrixSimulation"/>
+    </entity>
+    <entity name="RAEmployee" representedClassName="RAEmployee" syncable="YES" codeGenerationType="class">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="email" attributeType="String" maxValueString="100" regularExpressionString="\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b"/>
+        <attribute name="internalUserId" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" attributeType="String" maxValueString="100"/>
+        <attribute name="surname" attributeType="String" maxValueString="100"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="owner" maxCount="1" deletionRule="Nullify" destinationEntity="RAOwner" inverseName="employees" inverseEntity="RAOwner"/>
+        <relationship name="restaurants" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RARestaurant" inverseName="employees" inverseEntity="RARestaurant"/>
+        <userInfo>
+            <entry key="docs" value="Account of an owner's employee"/>
+        </userInfo>
+    </entity>
+    <entity name="RAIngredient" representedClassName="RAIngredient" syncable="YES" codeGenerationType="class">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="amount" attributeType="Integer 32" minValueString="1" usesScalarValueType="YES">
+            <userInfo>
+                <entry key="docs" value="amount which can be bought by paying RAIngredient/price, a fixed-point number with precision of 3"/>
+            </userInfo>
+        </attribute>
+        <attribute name="archived" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="calorificValue" optional="YES" attributeType="Integer 32" minValueString="1" usesScalarValueType="YES">
+            <userInfo>
+                <entry key="docs" value="per 100g"/>
+            </userInfo>
+        </attribute>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" attributeType="String" maxValueString="100"/>
+        <attribute name="price" attributeType="Integer 32" minValueString="1" usesScalarValueType="YES">
+            <userInfo>
+                <entry key="docs" value="price for a RAIngredient/amount, a fixed-point number with precision of 2"/>
+            </userInfo>
+        </attribute>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="allergens" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RAAllergen" inverseName="ingredients" inverseEntity="RAAllergen"/>
+        <relationship name="recipeIngredients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RARecipeIngredient" inverseName="ingredient" inverseEntity="RARecipeIngredient"/>
+        <relationship name="restaurant" maxCount="1" deletionRule="Nullify" destinationEntity="RARestaurant" inverseName="ingredients" inverseEntity="RARestaurant">
+            <userInfo>
+                <entry key="docs" value="New ingredients that are not related to RARecipeIngredient should have this relationship."/>
+            </userInfo>
+        </relationship>
+        <relationship name="unit" maxCount="1" deletionRule="Nullify" destinationEntity="RAUnit" inverseName="ingredients" inverseEntity="RAUnit">
+            <userInfo>
+                <entry key="docs" value="unit in which RAIngredient/amount is given"/>
+            </userInfo>
+        </relationship>
+    </entity>
+    <entity name="RALanguage" representedClassName="RALanguage" syncable="YES" codeGenerationType="class">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" attributeType="String" maxValueString="100" regularExpressionString="^[A-Z][a-z]+$"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="allergenTranslations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RAAllergenTranslation" inverseName="language" inverseEntity="RAAllergenTranslation"/>
+    </entity>
+    <entity name="RAMenu" representedClassName="RAMenu" syncable="YES" codeGenerationType="class">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES">
+            <userInfo>
+                <entry key="docs" value="Deleting RAMenu will also trigger deleting objects connected with this object: RARecipe via recipes"/>
+            </userInfo>
+        </attribute>
+        <attribute name="archived" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="isMainMenuOfARestaurant" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="name" attributeType="String" maxValueString="100"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="mainMenuOfARestaurant" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RARestaurant" inverseName="mainMenu" inverseEntity="RARestaurant">
+            <userInfo>
+                <entry key="docs" value="restaurant to which menu is assigned (only if menu is a main one)"/>
+            </userInfo>
+        </relationship>
+        <relationship name="recipes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RARecipe" inverseName="menus" inverseEntity="RARecipe"/>
+        <relationship name="restaurant" maxCount="1" deletionRule="Nullify" destinationEntity="RARestaurant" inverseName="menus" inverseEntity="RARestaurant"/>
+    </entity>
+    <entity name="RAOwner" representedClassName="RAOwner" syncable="YES" codeGenerationType="class">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="email" attributeType="String" regularExpressionString="\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b"/>
+        <attribute name="internalUserId" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" attributeType="String" maxValueString="100"/>
+        <attribute name="referral" attributeType="String" maxValueString="100"/>
+        <attribute name="surname" attributeType="String" maxValueString="100"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="currentPaymentProfile" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RAPaymentProfile" inverseName="currentlyUsedBy" inverseEntity="RAPaymentProfile"/>
+        <relationship name="employees" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RAEmployee" inverseName="owner" inverseEntity="RAEmployee"/>
+        <relationship name="paymentProfiles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RAPaymentProfile" inverseName="owner" inverseEntity="RAPaymentProfile"/>
+        <relationship name="promoCode" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RAPromoCode" inverseName="owner" inverseEntity="RAPromoCode"/>
+        <relationship name="refundableTransactions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RARefundableTransaction" inverseName="owner" inverseEntity="RARefundableTransaction"/>
+        <relationship name="restaurants" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RARestaurant" inverseName="owner" inverseEntity="RARestaurant"/>
+        <relationship name="subscriptionState" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RASubscriptionState" inverseName="owner" inverseEntity="RASubscriptionState"/>
+        <relationship name="subscriptionToBuy" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RASubscriptionProduct" inverseName="ownersToBeBoughtBy" inverseEntity="RASubscriptionProduct">
+            <userInfo>
+                <entry key="docs" value="Subscription to be bought by owner after the current subscription has expired"/>
+            </userInfo>
+        </relationship>
+        <relationship name="vatPercentages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RAVatPercentage" inverseName="owner" inverseEntity="RAVatPercentage"/>
+        <userInfo>
+            <entry key="docs" value="Person who bought a license"/>
+        </userInfo>
+    </entity>
+    <entity name="RAPayment" representedClassName="RAPayment" syncable="YES" codeGenerationType="class">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="amount" attributeType="Integer 32" minValueString="1" usesScalarValueType="YES"/>
+        <attribute name="created" attributeType="Integer 32" usesScalarValueType="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="currency" optional="YES" attributeType="String" minValueString="3" maxValueString="3">
+            <userInfo>
+                <entry key="docs" value="3-letter ISO code of currency"/>
+            </userInfo>
+        </attribute>
+        <attribute name="notificationUrl" optional="YES" attributeType="String"/>
+        <attribute name="orderId" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="paymentId" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="status" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="updated" attributeType="Integer 32" usesScalarValueType="YES"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="refundableTransaction" maxCount="1" deletionRule="Nullify" destinationEntity="RARefundableTransaction" inverseName="payments" inverseEntity="RARefundableTransaction"/>
+        <relationship name="subscriptionOrder" maxCount="1" deletionRule="Nullify" destinationEntity="RASubscriptionOrder" inverseName="payments" inverseEntity="RASubscriptionOrder"/>
+        <relationship name="transaction" maxCount="1" deletionRule="Nullify" destinationEntity="RATransaction" inverseName="payments" inverseEntity="RATransaction"/>
+    </entity>
+    <entity name="RAPaymentProfile" representedClassName="RAPaymentProfile" syncable="YES" codeGenerationType="class">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="firstName" attributeType="String"/>
+        <attribute name="isActive" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="lastName" attributeType="String"/>
+        <attribute name="maskedNumber" attributeType="String" minValueString="8" maxValueString="8" regularExpressionString="\*{4}\d{4}"/>
+        <attribute name="merchantCustomerId" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="month" attributeType="Integer 32" minValueString="1" maxValueString="12" usesScalarValueType="YES"/>
+        <attribute name="organization" attributeType="String"/>
+        <attribute name="profile" attributeType="String"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="year" attributeType="Integer 32" minValueString="2000" maxValueString="2999" usesScalarValueType="YES"/>
+        <relationship name="currentlyUsedBy" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RAOwner" inverseName="currentPaymentProfile" inverseEntity="RAOwner"/>
+        <relationship name="owner" maxCount="1" deletionRule="Nullify" destinationEntity="RAOwner" inverseName="paymentProfiles" inverseEntity="RAOwner"/>
+        <relationship name="transactions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RATransaction" inverseName="paymentProfile" inverseEntity="RATransaction"/>
+    </entity>
+    <entity name="RAPrice" representedClassName="RAPrice" syncable="YES" codeGenerationType="class">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="amount" attributeType="Integer 32" minValueString="1" usesScalarValueType="YES">
+            <userInfo>
+                <entry key="docs" value="netto"/>
+            </userInfo>
+        </attribute>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="currency" attributeType="String" minValueString="3" maxValueString="3">
+            <userInfo>
+                <entry key="docs" value="3-letter ISO code of currency"/>
+            </userInfo>
+        </attribute>
+        <attribute name="taxAmount" attributeType="Integer 32" minValueString="0" usesScalarValueType="YES"/>
+        <attribute name="taxPercentage" attributeType="Double" minValueString="0" usesScalarValueType="YES"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="subscriptionTemplates" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RASubscriptionProduct" inverseName="prices" inverseEntity="RASubscriptionProduct"/>
+    </entity>
+    <entity name="RAPromoCode" representedClassName="RAPromoCode" syncable="YES" codeGenerationType="class">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="availableFrom" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="availableUntil" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="code" attributeType="String"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="distributorId" attributeType="String"/>
+        <attribute name="referrerId" attributeType="String"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="usedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RAOwner" inverseName="promoCode" inverseEntity="RAOwner"/>
+        <relationship name="subscriptionOrder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RASubscriptionOrder" inverseName="promoCode" inverseEntity="RASubscriptionOrder"/>
+        <relationship name="subscriptionProduct" maxCount="1" deletionRule="Nullify" destinationEntity="RASubscriptionProduct" inverseName="promoCodes" inverseEntity="RASubscriptionProduct"/>
+    </entity>
+    <entity name="RARecipe" representedClassName="RARecipe" syncable="YES" codeGenerationType="class">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES">
+            <userInfo>
+                <entry key="docs" value="Deleting RARecipe will also trigger deleting objects connected with this object: RARecipePreparation via preparationSteps, RARecipeIngredient via recipeIngredients, RASubRecipe via subRecipes"/>
+            </userInfo>
+        </attribute>
+        <attribute name="archived" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="grossPrice" optional="YES" attributeType="Integer 32" minValueString="1" usesScalarValueType="YES">
+            <userInfo>
+                <entry key="docs" value="gross price, a fixed-point number with precision of 2"/>
+            </userInfo>
+        </attribute>
+        <attribute name="name" attributeType="String" maxValueString="100"/>
+        <attribute name="numberOfPortionsProduced" optional="YES" attributeType="Integer 32" minValueString="1" usesScalarValueType="YES">
+            <userInfo>
+                <entry key="docs" value="A number used to recalculate amount of ingredients for example if ingredientsRatio changes from 1 to 2 tomatoes usage goes from 2kg to 4kg, a fixed-point number with precision of 0"/>
+            </userInfo>
+        </attribute>
+        <attribute name="numberOfPortionsToSell" optional="YES" attributeType="Integer 32" minValueString="0" defaultValueString="0" usesScalarValueType="YES">
+            <userInfo>
+                <entry key="docs" value="Portions which will be sold after a recipe is prepared, used in recipe profitability calculations, a fixed-point number with precision of 0"/>
+            </userInfo>
+        </attribute>
+        <attribute name="photo" optional="YES" attributeType="URI">
+            <userInfo>
+                <entry key="docs" value="S3 bucket key"/>
+            </userInfo>
+        </attribute>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="categories" toMany="YES" deletionRule="Nullify" destinationEntity="RACategory" inverseName="recipes" inverseEntity="RACategory"/>
+        <relationship name="menus" toMany="YES" deletionRule="Nullify" destinationEntity="RAMenu" inverseName="recipes" inverseEntity="RAMenu"/>
+        <relationship name="parentRecipes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RASubRecipe" inverseName="subRecipe" inverseEntity="RASubRecipe"/>
+        <relationship name="preparationSteps" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RARecipePreparation" inverseName="recipe" inverseEntity="RARecipePreparation"/>
+        <relationship name="recipeIngredients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RARecipeIngredient" inverseName="recipe" inverseEntity="RARecipeIngredient"/>
+        <relationship name="recipeSnapshots" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RABCGMatrixRecipeSnapshot" inverseName="recipe" inverseEntity="RABCGMatrixRecipeSnapshot"/>
+        <relationship name="subRecipes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RASubRecipe" inverseName="recipe" inverseEntity="RASubRecipe"/>
+        <relationship name="vatPercentage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RAVatPercentage" inverseName="recipes" inverseEntity="RAVatPercentage"/>
+    </entity>
+    <entity name="RARecipeIngredient" representedClassName="RARecipeIngredient" syncable="YES" codeGenerationType="class">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="amount" attributeType="Integer 32" minValueString="1" usesScalarValueType="YES">
+            <userInfo>
+                <entry key="docs" value="amount of subRecipe standard portion used, a fixed-point number with precision of 3"/>
+            </userInfo>
+        </attribute>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="ingredient" maxCount="1" deletionRule="Nullify" destinationEntity="RAIngredient" inverseName="recipeIngredients" inverseEntity="RAIngredient"/>
+        <relationship name="recipe" maxCount="1" deletionRule="Nullify" destinationEntity="RARecipe" inverseName="recipeIngredients" inverseEntity="RARecipe"/>
+        <relationship name="unit" maxCount="1" deletionRule="Nullify" destinationEntity="RAUnit" inverseName="recipeIngredients" inverseEntity="RAUnit"/>
+    </entity>
+    <entity name="RARecipePreparation" representedClassName="RARecipePreparation" syncable="YES" codeGenerationType="class">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="stepDescription" attributeType="String" maxValueString="10000"/>
+        <attribute name="stepNo" attributeType="Integer 32" minValueString="0" usesScalarValueType="YES"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="recipe" maxCount="1" deletionRule="Nullify" destinationEntity="RARecipe" inverseName="preparationSteps" inverseEntity="RARecipe"/>
+    </entity>
+    <entity name="RARefundableTransaction" representedClassName="RARefundableTransaction" syncable="YES" codeGenerationType="class">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="owner" maxCount="1" deletionRule="Nullify" destinationEntity="RAOwner" inverseName="refundableTransactions" inverseEntity="RAOwner"/>
+        <relationship name="payments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RAPayment" inverseName="refundableTransaction" inverseEntity="RAPayment"/>
+        <relationship name="transactions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RATransaction" inverseName="refundableTransaction" inverseEntity="RATransaction"/>
+        <userInfo>
+            <entry key="docs" value="The purpose of this entity is to track transactions which create new payment profiles and are to be refunded immediately."/>
+        </userInfo>
+    </entity>
+    <entity name="RARestaurant" representedClassName="RARestaurant" syncable="YES" codeGenerationType="class">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES">
+            <userInfo>
+                <entry key="docs" value="Deleting RARestaurant will also trigger deleting objects connected with this object: RACategory via categories, RAMenu via menus, RAIngredient via ingredients"/>
+            </userInfo>
+        </attribute>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="foodcostLowerThreshold" attributeType="Integer 32" minValueString="0" defaultValueString="33" usesScalarValueType="YES">
+            <userInfo>
+                <entry key="docs" value="Value foodcostLowerThreshold can't be higher than foodcostUpperThreshold."/>
+            </userInfo>
+        </attribute>
+        <attribute name="foodcostUpperThreshold" attributeType="Integer 32" maxValueString="100" defaultValueString="66" usesScalarValueType="YES">
+            <userInfo>
+                <entry key="docs" value="Value foodcostLowerThreshold can't be higher than foodcostUpperThreshold."/>
+            </userInfo>
+        </attribute>
+        <attribute name="name" attributeType="String" maxValueString="100"/>
+        <attribute name="requestedSubscriptionActive" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES">
+            <userInfo>
+                <entry key="docs" value="Before subscription is downgraded, owner is encouraged to select which restaurants should be subscriptionActive by setting this flag to true."/>
+            </userInfo>
+        </attribute>
+        <attribute name="subscriptionActive" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES">
+            <userInfo>
+                <entry key="docs" value="Number of active restaurants with this flag set to true must be less or equal to maxRestaurants in current subscription product. New restaurant must have this flag set to true. If subscription tier is lowered, all flags are set to false."/>
+            </userInfo>
+        </attribute>
+        <attribute name="unitSystem" attributeType="String" regularExpressionString="^(metric|imperial)$">
+            <userInfo>
+                <entry key="docs" value="Measurement system used in a restaurant. Set at the moment of the creation, cannot be changed later."/>
+            </userInfo>
+        </attribute>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="categories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RACategory" inverseName="restaurant" inverseEntity="RACategory"/>
+        <relationship name="employees" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RAEmployee" inverseName="restaurants" inverseEntity="RAEmployee"/>
+        <relationship name="ingredients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RAIngredient" inverseName="restaurant" inverseEntity="RAIngredient"/>
+        <relationship name="mainMenu" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RAMenu" inverseName="mainMenuOfARestaurant" inverseEntity="RAMenu"/>
+        <relationship name="menus" toMany="YES" deletionRule="Nullify" destinationEntity="RAMenu" inverseName="restaurant" inverseEntity="RAMenu"/>
+        <relationship name="owner" maxCount="1" deletionRule="Nullify" destinationEntity="RAOwner" inverseName="restaurants" inverseEntity="RAOwner"/>
+        <relationship name="simulations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RABCGMatrixSimulation" inverseName="restaurant" inverseEntity="RABCGMatrixSimulation"/>
+    </entity>
+    <entity name="RASubRecipe" representedClassName="RASubRecipe" syncable="YES" codeGenerationType="class">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="amount" attributeType="Integer 32" minValueString="1" usesScalarValueType="YES">
+            <userInfo>
+                <entry key="docs" value="amount of subRecipe standard portion used, a fixed-point number with precision of 3"/>
+            </userInfo>
+        </attribute>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="recipe" maxCount="1" deletionRule="Nullify" destinationEntity="RARecipe" inverseName="subRecipes" inverseEntity="RARecipe">
+            <userInfo>
+                <entry key="docs" value="Recipe which is using other recipe"/>
+            </userInfo>
+        </relationship>
+        <relationship name="subRecipe" maxCount="1" deletionRule="Nullify" destinationEntity="RARecipe" inverseName="parentRecipes" inverseEntity="RARecipe">
+            <userInfo>
+                <entry key="docs" value="Recipe being used by the other one "/>
+            </userInfo>
+        </relationship>
+    </entity>
+    <entity name="RASubscriptionAction" representedClassName="RASubscriptionAction" syncable="YES" codeGenerationType="class">
+        <attribute name="actionDescription" optional="YES" attributeType="String"/>
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="orders" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RASubscriptionOrder" inverseName="subscriptionAction" inverseEntity="RASubscriptionOrder"/>
+        <relationship name="state" maxCount="1" deletionRule="Nullify" destinationEntity="RASubscriptionState" inverseName="subscriptionActions" inverseEntity="RASubscriptionState"/>
+    </entity>
+    <entity name="RASubscriptionOrder" representedClassName="RASubscriptionOrder" syncable="YES" codeGenerationType="class">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="expectedAmount" attributeType="Integer 32" usesScalarValueType="YES"/>
+        <attribute name="expectedCurrency" attributeType="String" minValueString="3" maxValueString="3">
+            <userInfo>
+                <entry key="docs" value="3-letter ISO code of currency"/>
+            </userInfo>
+        </attribute>
+        <attribute name="invoiceAddress" optional="YES" attributeType="String"/>
+        <attribute name="invoiceCompanyName" optional="YES" attributeType="String"/>
+        <attribute name="invoiceCompanyNumber" optional="YES" attributeType="String"/>
+        <attribute name="invoiceEmail" optional="YES" attributeType="String" regularExpressionString="\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b"/>
+        <attribute name="productEndDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="productStartDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="widgetPayment" attributeType="Boolean" usesScalarValueType="YES"/>
+        <relationship name="currentFor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RASubscriptionState" inverseName="currentOrder" inverseEntity="RASubscriptionState"/>
+        <relationship name="payments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RAPayment" inverseName="subscriptionOrder" inverseEntity="RAPayment"/>
+        <relationship name="pendingFor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RASubscriptionState" inverseName="pendingOrders" inverseEntity="RASubscriptionState"/>
+        <relationship name="promoCode" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RAPromoCode" inverseName="subscriptionOrder" inverseEntity="RAPromoCode"/>
+        <relationship name="subscriptionAction" maxCount="1" deletionRule="Nullify" destinationEntity="RASubscriptionAction" inverseName="orders" inverseEntity="RASubscriptionAction"/>
+        <relationship name="subscriptionProduct" maxCount="1" deletionRule="Nullify" destinationEntity="RASubscriptionProduct" inverseName="orders" inverseEntity="RASubscriptionProduct"/>
+        <relationship name="transaction" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RATransaction" inverseName="subscriptionOrder" inverseEntity="RATransaction"/>
+    </entity>
+    <entity name="RASubscriptionProduct" representedClassName="RASubscriptionProduct" syncable="YES" codeGenerationType="class">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="buyable" attributeType="Boolean" usesScalarValueType="YES">
+            <userInfo>
+                <entry key="docs" value="If the flag is set to false, only RAOwners who already have this subscription selected can buy it. Unselecting it will cause RAOwner to lose rights to buy it, as he can't select it again."/>
+            </userInfo>
+        </attribute>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="maxEmployees" optional="YES" attributeType="Integer 32" minValueString="0" usesScalarValueType="YES">
+            <userInfo>
+                <entry key="docs" value="unlimited if missing"/>
+            </userInfo>
+        </attribute>
+        <attribute name="maxEmployeesPerRestaurant" optional="YES" attributeType="Integer 32" minValueString="0" usesScalarValueType="YES">
+            <userInfo>
+                <entry key="docs" value="unlimited if missing"/>
+            </userInfo>
+        </attribute>
+        <attribute name="maxRestaurants" optional="YES" attributeType="Integer 32" minValueString="0" usesScalarValueType="YES">
+            <userInfo>
+                <entry key="docs" value="unlimited if missing"/>
+            </userInfo>
+        </attribute>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="period" attributeType="Integer 32" minValueString="1" usesScalarValueType="YES">
+            <userInfo>
+                <entry key="docs" value="In months"/>
+            </userInfo>
+        </attribute>
+        <attribute name="predefined" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="orders" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RASubscriptionOrder" inverseName="subscriptionProduct" inverseEntity="RASubscriptionOrder"/>
+        <relationship name="ownersToBeBoughtBy" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RAOwner" inverseName="subscriptionToBuy" inverseEntity="RAOwner"/>
+        <relationship name="prices" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RAPrice" inverseName="subscriptionTemplates" inverseEntity="RAPrice">
+            <userInfo>
+                <entry key="docs" value="Each price should have a distinct currency"/>
+            </userInfo>
+        </relationship>
+        <relationship name="promoCodes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RAPromoCode" inverseName="subscriptionProduct" inverseEntity="RAPromoCode"/>
+        <relationship name="upgradesFrom" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RASubscriptionProduct" inverseName="upgradesTo" inverseEntity="RASubscriptionProduct">
+            <userInfo>
+                <entry key="docs" value="Change from one subscription to another happens immediately only if they are connected with upgradesFrom/upgradesTo"/>
+            </userInfo>
+        </relationship>
+        <relationship name="upgradesTo" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RASubscriptionProduct" inverseName="upgradesFrom" inverseEntity="RASubscriptionProduct">
+            <userInfo>
+                <entry key="docs" value="Change from one subscription to another happens immediately only if they are connected with upgradesFrom/upgradesTo"/>
+            </userInfo>
+        </relationship>
+        <userInfo>
+            <entry key="docs" value="After creating a product, it shouldn't be changed at all (except for buyable flag)"/>
+        </userInfo>
+    </entity>
+    <entity name="RASubscriptionState" representedClassName="RASubscriptionState" syncable="YES" codeGenerationType="class">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="invoiceAddress" optional="YES" attributeType="String"/>
+        <attribute name="invoiceCompanyName" optional="YES" attributeType="String"/>
+        <attribute name="invoiceCompanyNumber" optional="YES" attributeType="String"/>
+        <attribute name="invoiceEmail" optional="YES" attributeType="String" regularExpressionString="\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b"/>
+        <attribute name="requiresSelectSubscriptionActiveRestaurants" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="sendInvoices" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="state" attributeType="String" regularExpressionString="^(ACTIVE|EXPIRED|SUSPENDED|CANCELLED|INITIAL)$"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="userNotification" optional="YES" attributeType="String">
+            <userInfo>
+                <entry key="docs" value="Notification displayed at the top of page (example: payment has failed)"/>
+            </userInfo>
+        </attribute>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="currentOrder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RASubscriptionOrder" inverseName="currentFor" inverseEntity="RASubscriptionOrder"/>
+        <relationship name="owner" maxCount="1" deletionRule="Nullify" destinationEntity="RAOwner" inverseName="subscriptionState" inverseEntity="RAOwner"/>
+        <relationship name="pendingOrders" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RASubscriptionOrder" inverseName="pendingFor" inverseEntity="RASubscriptionOrder"/>
+        <relationship name="subscriptionActions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RASubscriptionAction" inverseName="state" inverseEntity="RASubscriptionAction"/>
+    </entity>
+    <entity name="RATransaction" representedClassName="RATransaction" syncable="YES" codeGenerationType="class">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="amount" attributeType="Integer 32" minValueString="1" usesScalarValueType="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="currency" optional="YES" attributeType="String" minValueString="3" maxValueString="3">
+            <userInfo>
+                <entry key="docs" value="3-letter ISO code of currency"/>
+            </userInfo>
+        </attribute>
+        <attribute name="notificationUrl" optional="YES" attributeType="String"/>
+        <attribute name="orderId" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="paymentMethod" attributeType="String"/>
+        <attribute name="paymentMethodCode" optional="YES" attributeType="String"/>
+        <attribute name="source" optional="YES" attributeType="String"/>
+        <attribute name="status" attributeType="String"/>
+        <attribute name="statusCode" optional="YES" attributeType="String"/>
+        <attribute name="statusCodeDescription" optional="YES" attributeType="String"/>
+        <attribute name="title" attributeType="String"/>
+        <attribute name="transactionId" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="paymentProfile" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RAPaymentProfile" inverseName="transactions" inverseEntity="RAPaymentProfile"/>
+        <relationship name="payments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RAPayment" inverseName="transaction" inverseEntity="RAPayment"/>
+        <relationship name="refundableTransaction" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RARefundableTransaction" inverseName="transactions" inverseEntity="RARefundableTransaction"/>
+        <relationship name="subscriptionOrder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RASubscriptionOrder" inverseName="transaction" inverseEntity="RASubscriptionOrder"/>
+    </entity>
+    <entity name="RAUnit" representedClassName="RAUnit" syncable="YES" codeGenerationType="class">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="divisor" attributeType="Integer 32" minValueString="1" usesScalarValueType="YES">
+            <userInfo>
+                <entry key="docs" value="Number by which an amount needs to be divided in order to convert from the base units to a specific unit"/>
+            </userInfo>
+        </attribute>
+        <attribute name="multiplier" attributeType="Float" usesScalarValueType="YES">
+            <userInfo>
+                <entry key="docs" value="Conversion factor by which an amount needs to be multiplied to be converted to a unit from the main one."/>
+            </userInfo>
+        </attribute>
+        <attribute name="name" attributeType="String" maxValueString="1000"/>
+        <attribute name="system" attributeType="String" regularExpressionString="^(metric|imperial)$">
+            <userInfo>
+                <entry key="docs" value="Measurement system to which unit belong to (metric or imperial)"/>
+            </userInfo>
+        </attribute>
+        <attribute name="type" attributeType="String" regularExpressionString="^(volume|weight|quantity)$">
+            <userInfo>
+                <entry key="docs" value="Type of physical property which unit decribe (volume|weight|quantity)"/>
+            </userInfo>
+        </attribute>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="ingredients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RAIngredient" inverseName="unit" inverseEntity="RAIngredient"/>
+        <relationship name="recipeIngredients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RARecipeIngredient" inverseName="unit" inverseEntity="RARecipeIngredient"/>
+    </entity>
+    <entity name="RAVatPercentage" representedClassName="RAVatPercentage" syncable="YES" codeGenerationType="class">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="percentage" attributeType="Integer 32" minValueString="0" maxValueString="100" usesScalarValueType="YES"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RAOwner" inverseName="vatPercentages" inverseEntity="RAOwner"/>
+        <relationship name="recipes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RARecipe" inverseName="vatPercentage" inverseEntity="RARecipe"/>
+    </entity>
+</model>

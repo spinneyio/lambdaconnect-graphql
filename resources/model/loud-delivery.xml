@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="18G9216" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="LDArea" representedClassName="LDArea" syncable="YES">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="code" attributeType="String" minValueString="1" maxValueString="100"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="isSuitableForPush" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO"/>
+        <attribute name="name" attributeType="String" minValueString="1" maxValueString="100"/>
+        <attribute name="nameArabic" attributeType="String" minValueString="1" maxValueString="100"/>
+        <attribute name="syncRevision" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="locations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDLocation" inverseName="area" inverseEntity="LDLocation"/>
+        <relationship name="restaurants" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDRestaurant" inverseName="areas" inverseEntity="LDRestaurant"/>
+    </entity>
+    <entity name="LDBrand" representedClassName="LDBrand" syncable="YES">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="businessId" optional="YES" attributeType="String"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="destinationId" optional="YES" attributeType="String"/>
+        <attribute name="details" optional="YES" attributeType="String" minValueString="2" maxValueString="10000"/>
+        <attribute name="detailsArabic" optional="YES" attributeType="String" minValueString="2" maxValueString="10000"/>
+        <attribute name="isEnabled" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="isSuitableForPush" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO"/>
+        <attribute name="mealPreparationTime" optional="YES" attributeType="Integer 32" minValueString="0" maxValueString="600" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String" minValueString="2" maxValueString="100"/>
+        <attribute name="nameArabic" optional="YES" attributeType="String" minValueString="2" maxValueString="100"/>
+        <attribute name="syncRevision" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="weight" attributeType="Double" minValueString="0" maxValueString="1" defaultValueString="0.5" usesScalarValueType="YES"/>
+        <relationship name="availableCoupons" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDDiscount" inverseName="brand" inverseEntity="LDDiscount"/>
+        <relationship name="categories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDBrandCategory" inverseName="brands" inverseEntity="LDBrandCategory"/>
+        <relationship name="cmsUsers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDCMSUser" inverseName="brand" inverseEntity="LDCMSUser"/>
+        <relationship name="company" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDCompany" inverseName="brands" inverseEntity="LDCompany"/>
+        <relationship name="favouriteBrandOfCustomer" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDCustomer" inverseName="favouriteBrands" inverseEntity="LDCustomer"/>
+        <relationship name="logo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDMedia" inverseName="brandLogo" inverseEntity="LDMedia"/>
+        <relationship name="media" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDMedia" inverseName="brand" inverseEntity="LDMedia"/>
+        <relationship name="menuGroups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDMenuGroup" inverseName="brand" inverseEntity="LDMenuGroup"/>
+        <relationship name="paymentInformation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDPaymentInformation" inverseName="brand" inverseEntity="LDPaymentInformation"/>
+        <relationship name="posts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDPost" inverseName="brand" inverseEntity="LDPost"/>
+        <relationship name="restaurants" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDRestaurant" inverseName="brand" inverseEntity="LDRestaurant"/>
+    </entity>
+    <entity name="LDBrandCategory" representedClassName="LDBrandCategory" syncable="YES">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="isSuitableForPush" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO"/>
+        <attribute name="name" attributeType="String" minValueString="2" maxValueString="100"/>
+        <attribute name="nameArabic" attributeType="String" minValueString="2" maxValueString="100"/>
+        <attribute name="syncRevision" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="brands" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDBrand" inverseName="categories" inverseEntity="LDBrand"/>
+    </entity>
+    <entity name="LDChatRoom" representedClassName="LDChatRoom" syncable="YES">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="isSuitableForPush" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO"/>
+        <attribute name="syncRevision" optional="YES" attributeType="Integer 64" defaultValueString="0.0" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="delivery" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDDelivery" inverseName="chatRoom" inverseEntity="LDDelivery"/>
+        <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDMessage" inverseName="chatRoom" inverseEntity="LDMessage"/>
+        <relationship name="participants" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDUser" inverseName="chatRooms" inverseEntity="LDUser"/>
+    </entity>
+    <entity name="LDCMSUser" representedClassName="LDCMSUser" syncable="YES">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="email" attributeType="String" minValueString="1" maxValueString="1000" regularExpressionString="\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b"/>
+        <attribute name="enabled" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="fullName" attributeType="String" minValueString="2" maxValueString="100"/>
+        <attribute name="internalUserId" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isSuitableForPush" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO"/>
+        <attribute name="role" attributeType="String" minValueString="1" maxValueString="100" regularExpressionString="^(RestaurantStaff|RestaurantManager|BrandManager|CompanyManager|DriverManager|AccountManager|SystemAdministrator|Copywriter)$"/>
+        <attribute name="syncRevision" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="authoredPosts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDPost" inverseName="authoredBy" inverseEntity="LDPost"/>
+        <relationship name="brand" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDBrand" inverseName="cmsUsers" inverseEntity="LDBrand"/>
+        <relationship name="company" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDCompany" inverseName="cmsUsers" inverseEntity="LDCompany"/>
+        <relationship name="restaurant" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDRestaurant" inverseName="cmsUsers" inverseEntity="LDRestaurant"/>
+    </entity>
+    <entity name="LDCompany" representedClassName="LDCompany" syncable="YES">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="isEnabled" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="isSuitableForPush" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String" minValueString="2" maxValueString="100"/>
+        <attribute name="nameArabic" optional="YES" attributeType="String" minValueString="2" maxValueString="100"/>
+        <attribute name="syncRevision" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="brands" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDBrand" inverseName="company" inverseEntity="LDBrand"/>
+        <relationship name="cmsUsers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDCMSUser" inverseName="company" inverseEntity="LDCMSUser"/>
+        <relationship name="media" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDMedia" inverseName="company" inverseEntity="LDMedia"/>
+    </entity>
+    <entity name="LDCustomer" representedClassName="LDCustomer" syncable="YES">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="businessId" optional="YES" attributeType="String"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="destinationId" optional="YES" attributeType="String"/>
+        <attribute name="isInfluencer" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="isSuitableForPush" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO"/>
+        <attribute name="paymentProviderCustomer" optional="YES" attributeType="String"/>
+        <attribute name="syncRevision" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="baseUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDUser" inverseName="customer" inverseEntity="LDUser"/>
+        <relationship name="currentOrder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDOrder" inverseName="currentForCustomer" inverseEntity="LDOrder"/>
+        <relationship name="favouriteBrands" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDBrand" inverseName="favouriteBrandOfCustomer" inverseEntity="LDBrand"/>
+        <relationship name="favouriteMenuItems" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDMenuItem" inverseName="favouriteOfCustomer" inverseEntity="LDMenuItem"/>
+        <relationship name="followed" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDCustomer" inverseName="followers" inverseEntity="LDCustomer"/>
+        <relationship name="followers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDCustomer" inverseName="followed" inverseEntity="LDCustomer"/>
+        <relationship name="likedPosts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDPost" inverseName="likedByCustomers" inverseEntity="LDPost"/>
+        <relationship name="orders" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDOrder" inverseName="customer" inverseEntity="LDOrder"/>
+        <relationship name="paymentInformation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDPaymentInformation" inverseName="influencer" inverseEntity="LDPaymentInformation"/>
+        <relationship name="pollAnswers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDPollAnswer" inverseName="votes" inverseEntity="LDPollAnswer"/>
+        <relationship name="postsCreated" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDPost" inverseName="influencer" inverseEntity="LDPost"/>
+        <relationship name="primaryLocation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDLocation" inverseName="primaryLocationOfCustomer" inverseEntity="LDLocation"/>
+        <relationship name="savedLocations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDLocation" inverseName="customer" inverseEntity="LDLocation"/>
+    </entity>
+    <entity name="LDDelivery" representedClassName="LDDelivery" syncable="YES">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="customerNote" optional="YES" attributeType="String" minValueString="1" maxValueString="10000"/>
+        <attribute name="distanceTravelled" optional="YES" attributeType="Double" minValueString="0" defaultValueString="0.0" usesScalarValueType="NO"/>
+        <attribute name="driverNote" optional="YES" attributeType="String" minValueString="1" maxValueString="10000"/>
+        <attribute name="endedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="eta" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="isSuitableForPush" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO"/>
+        <attribute name="moneyEarned" optional="YES" attributeType="Integer 64" minValueString="0" maxValueString="10000000" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="pickedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="startedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="status" attributeType="String" minValueString="1" defaultValueString="Created" regularExpressionString="^(Created|DriverFound|DriverPickedUp|Delivered|Failed)$"/>
+        <attribute name="syncRevision" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="chatRoom" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDChatRoom" inverseName="delivery" inverseEntity="LDChatRoom"/>
+        <relationship name="driver" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDDriver" inverseName="deliveries" inverseEntity="LDDriver"/>
+        <relationship name="order" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDOrder" inverseName="delivery" inverseEntity="LDOrder"/>
+        <relationship name="proofImage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDMedia" inverseName="delivery" inverseEntity="LDMedia"/>
+    </entity>
+    <entity name="LDDiscount" representedClassName="LDDiscount" syncable="YES">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="applicableAbovePrice" attributeType="Integer 64" minValueString="0" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="code" optional="YES" attributeType="String" minValueString="2" maxValueString="1000"/>
+        <attribute name="codeHash" optional="YES" attributeType="String" minValueString="2" maxValueString="1000"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="discountValue" attributeType="Integer 64" minValueString="-10000000" maxValueString="10000000" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="expiresAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="freeDelivery" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="isEnabled" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="isExclusive" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="isPercentageDiscount" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="isSuitableForPush" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String" minValueString="1" maxValueString="100"/>
+        <attribute name="nameArabic" optional="YES" attributeType="String" minValueString="2" maxValueString="100"/>
+        <attribute name="startsAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="syncRevision" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="usageLimit" optional="YES" attributeType="Integer 32" minValueString="0" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="brand" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDBrand" inverseName="availableCoupons" inverseEntity="LDBrand"/>
+        <relationship name="orders" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDOrder" inverseName="discounts" inverseEntity="LDOrder"/>
+    </entity>
+    <entity name="LDDriver" representedClassName="LDDriver" syncable="YES">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="isSuitableForPush" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO"/>
+        <attribute name="nativeLanguage" attributeType="String" minValueString="1" maxValueString="100"/>
+        <attribute name="occupied" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO"/>
+        <attribute name="syncRevision" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="vehicleType" attributeType="String" minValueString="1" defaultValueString="Car" regularExpressionString="^(Car|Scooter|Bicycle|Feet|Other)$"/>
+        <relationship name="baseUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDUser" inverseName="driver" inverseEntity="LDUser"/>
+        <relationship name="deliveries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDDelivery" inverseName="driver" inverseEntity="LDDelivery"/>
+        <relationship name="verificationRequests" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDVerificationRequest" inverseName="driver" inverseEntity="LDVerificationRequest"/>
+    </entity>
+    <entity name="LDFoodTag" representedClassName="LDFoodTag" syncable="YES">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="isSuitableForPush" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO"/>
+        <attribute name="name" attributeType="String" minValueString="2" maxValueString="100"/>
+        <attribute name="nameArabic" attributeType="String" minValueString="2" maxValueString="100"/>
+        <attribute name="syncRevision" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="menuItems" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDMenuItem" inverseName="foodTags" inverseEntity="LDMenuItem"/>
+    </entity>
+    <entity name="LDLocation" representedClassName="LDLocation" syncable="YES">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="apartment" optional="YES" attributeType="String" minValueString="1" maxValueString="100"/>
+        <attribute name="avenue" optional="YES" attributeType="String" minValueString="2" maxValueString="100"/>
+        <attribute name="block" optional="YES" attributeType="String" minValueString="1" maxValueString="100"/>
+        <attribute name="building" optional="YES" attributeType="String" minValueString="1" maxValueString="100"/>
+        <attribute name="city" optional="YES" attributeType="String" minValueString="1" maxValueString="100"/>
+        <attribute name="country" optional="YES" attributeType="String" minValueString="1" maxValueString="100"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="districtOrSuburb" optional="YES" attributeType="String" minValueString="1" maxValueString="100"/>
+        <attribute name="floor" optional="YES" attributeType="String" minValueString="1" maxValueString="100"/>
+        <attribute name="gpsAccuracy" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="gpsHeading" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="isSuitableForPush" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO"/>
+        <attribute name="latitude" attributeType="Double" minValueString="-90" maxValueString="90" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="longitude" attributeType="Double" minValueString="-180" maxValueString="180" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" minValueString="1" maxValueString="100"/>
+        <attribute name="notes" optional="YES" attributeType="String" minValueString="2" maxValueString="1000"/>
+        <attribute name="street" optional="YES" attributeType="String" minValueString="1" maxValueString="1000"/>
+        <attribute name="syncRevision" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="area" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDArea" inverseName="locations" inverseEntity="LDArea"/>
+        <relationship name="customer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDCustomer" inverseName="savedLocations" inverseEntity="LDCustomer"/>
+        <relationship name="order" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDOrder" inverseName="location" inverseEntity="LDOrder"/>
+        <relationship name="primaryLocationOfCustomer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDCustomer" inverseName="primaryLocation" inverseEntity="LDCustomer"/>
+        <relationship name="restaurant" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDRestaurant" inverseName="address" inverseEntity="LDRestaurant"/>
+    </entity>
+    <entity name="LDMedia" representedClassName="LDMedia" syncable="YES">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="identifier" optional="YES" attributeType="String" minValueString="2" maxValueString="100"/>
+        <attribute name="isSuitableForPush" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO"/>
+        <attribute name="mediaUrl" optional="YES" attributeType="URI"/>
+        <attribute name="sequenceInCollection" optional="YES" attributeType="Integer 16" minValueString="0" maxValueString="30000" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="syncRevision" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="text" optional="YES" attributeType="String" minValueString="2" maxValueString="10000"/>
+        <attribute name="textArabic" optional="YES" attributeType="String" minValueString="2" maxValueString="10000"/>
+        <attribute name="thumbUrl" optional="YES" attributeType="URI"/>
+        <attribute name="type" attributeType="String" regularExpressionString="^(Photo|Video|Voice|Text)$"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="brand" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDBrand" inverseName="media" inverseEntity="LDBrand"/>
+        <relationship name="brandLogo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDBrand" inverseName="logo" inverseEntity="LDBrand"/>
+        <relationship name="company" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDCompany" inverseName="media" inverseEntity="LDCompany"/>
+        <relationship name="delivery" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDDelivery" inverseName="proofImage" inverseEntity="LDDelivery"/>
+        <relationship name="meal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDMenuItem" inverseName="media" inverseEntity="LDMenuItem"/>
+        <relationship name="menu" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDMenuGroup" inverseName="media" inverseEntity="LDMenuGroup"/>
+        <relationship name="menuItemAddon" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDMenuItemAddon" inverseName="media" inverseEntity="LDMenuItemAddon"/>
+        <relationship name="message" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDMessage" inverseName="media" inverseEntity="LDMessage"/>
+        <relationship name="post" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDPost" inverseName="media" inverseEntity="LDPost"/>
+        <relationship name="restaurant" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDRestaurant" inverseName="media" inverseEntity="LDRestaurant"/>
+        <relationship name="review" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDOrderReview" inverseName="media" inverseEntity="LDOrderReview"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDUser" inverseName="profileMedia" inverseEntity="LDUser"/>
+        <relationship name="verificationDrivingLicense" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDVerificationRequest" inverseName="drivingLicensePhotos" inverseEntity="LDVerificationRequest"/>
+        <relationship name="verificationId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDVerificationRequest" inverseName="idDocumentPhotos" inverseEntity="LDVerificationRequest"/>
+    </entity>
+    <entity name="LDMenuGroup" representedClassName="LDMenuGroup" syncable="YES">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="isSuitableForPush" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String" minValueString="2" maxValueString="100"/>
+        <attribute name="nameArabic" optional="YES" attributeType="String" minValueString="2" maxValueString="100"/>
+        <attribute name="positionWeight" optional="YES" attributeType="Double" defaultValueString="0.5" usesScalarValueType="YES"/>
+        <attribute name="syncRevision" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="brand" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDBrand" inverseName="menuGroups" inverseEntity="LDBrand"/>
+        <relationship name="media" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDMedia" inverseName="menu" inverseEntity="LDMedia"/>
+        <relationship name="menuItems" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDMenuItem" inverseName="menu" inverseEntity="LDMenuItem"/>
+    </entity>
+    <entity name="LDMenuItem" representedClassName="LDMenuItem" syncable="YES">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="details" optional="YES" attributeType="String" minValueString="2" maxValueString="10000"/>
+        <attribute name="detailsArabic" optional="YES" attributeType="String" minValueString="2" maxValueString="10000"/>
+        <attribute name="isEnabled" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="isSuitableForPush" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String" minValueString="2" maxValueString="100"/>
+        <attribute name="nameArabic" optional="YES" attributeType="String" minValueString="2" maxValueString="100"/>
+        <attribute name="positionWeight" attributeType="Double" minValueString="0" maxValueString="1" defaultValueString="0.5" usesScalarValueType="YES"/>
+        <attribute name="price" attributeType="Integer 64" minValueString="0" maxValueString="1000000" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="syncRevision" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="taxRate" attributeType="Integer 64" minValueString="-1000" maxValueString="1000" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="addons" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDMenuItemAddon" inverseName="item" inverseEntity="LDMenuItemAddon"/>
+        <relationship name="availableForRestaurants" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDRestaurant" inverseName="availableMenuItems" inverseEntity="LDRestaurant"/>
+        <relationship name="favouriteOfCustomer" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDCustomer" inverseName="favouriteMenuItems" inverseEntity="LDCustomer"/>
+        <relationship name="foodTags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDFoodTag" inverseName="menuItems" inverseEntity="LDFoodTag"/>
+        <relationship name="media" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDMedia" inverseName="meal" inverseEntity="LDMedia"/>
+        <relationship name="menu" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDMenuGroup" inverseName="menuItems" inverseEntity="LDMenuGroup"/>
+        <relationship name="orderItems" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDOrderItem" inverseName="menuItem" inverseEntity="LDOrderItem"/>
+        <relationship name="posts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDPost" inverseName="menuItem" inverseEntity="LDPost"/>
+    </entity>
+    <entity name="LDMenuItemAddon" representedClassName="LDMenuItemAddon" syncable="YES">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="isSuitableForPush" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String" minValueString="2" maxValueString="100"/>
+        <attribute name="nameArabic" optional="YES" attributeType="String" minValueString="2" maxValueString="100"/>
+        <attribute name="positionWeight" attributeType="Double" minValueString="0" maxValueString="1" defaultValueString="0.5" usesScalarValueType="YES"/>
+        <attribute name="priceIncrease" attributeType="Integer 64" minValueString="-1000000" maxValueString="1000000" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="syncRevision" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="item" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDMenuItem" inverseName="addons" inverseEntity="LDMenuItem"/>
+        <relationship name="media" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDMedia" inverseName="menuItemAddon" inverseEntity="LDMedia"/>
+        <relationship name="orderItemAddons" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDOrderItemAddon" inverseName="menuItemAddon" inverseEntity="LDOrderItemAddon"/>
+    </entity>
+    <entity name="LDMessage" representedClassName="LDMessage" syncable="YES">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="isSuitableForPush" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO"/>
+        <attribute name="sentAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="syncRevision" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="chatRoom" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDChatRoom" inverseName="messages" inverseEntity="LDChatRoom"/>
+        <relationship name="media" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDMedia" inverseName="message" inverseEntity="LDMedia"/>
+        <relationship name="sender" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDUser" inverseName="sentMessages" inverseEntity="LDUser"/>
+    </entity>
+    <entity name="LDOrder" representedClassName="LDOrder" syncable="YES">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="confirmationCode" optional="YES" attributeType="String" minValueString="2"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="customerNote" optional="YES" attributeType="String" minValueString="1" maxValueString="10000"/>
+        <attribute name="fullDeliveryPrice" attributeType="Integer 64" minValueString="0" maxValueString="10000000" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" minValueString="5" maxValueString="1000"/>
+        <attribute name="isEarthFriendly" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="isSuitableForPush" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO"/>
+        <attribute name="paidAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="preparationEta" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="qrCode" optional="YES" attributeType="String" minValueString="1" maxValueString="1000"/>
+        <attribute name="status" attributeType="String" defaultValueString="Creating" regularExpressionString="^(Creating|Created|Paid|Accepted|Prepared|Delivered|Failed|Refunded|Rejected|Wishlist)$"/>
+        <attribute name="syncRevision" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="totalPrice" optional="YES" attributeType="Integer 64" minValueString="1" defaultValueString="1" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="wishlistName" optional="YES" attributeType="String" minValueString="2"/>
+        <relationship name="currentForCustomer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDCustomer" inverseName="currentOrder" inverseEntity="LDCustomer"/>
+        <relationship name="customer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDCustomer" inverseName="orders" inverseEntity="LDCustomer"/>
+        <relationship name="delivery" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDDelivery" inverseName="order" inverseEntity="LDDelivery"/>
+        <relationship name="discounts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDDiscount" inverseName="orders" inverseEntity="LDDiscount"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDOrderItem" inverseName="order" inverseEntity="LDOrderItem"/>
+        <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDLocation" inverseName="order" inverseEntity="LDLocation"/>
+        <relationship name="orderedBasedOnPost" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDPost" inverseName="ordersFromPost" inverseEntity="LDPost"/>
+        <relationship name="posts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDPost" inverseName="order" inverseEntity="LDPost"/>
+        <relationship name="restaurant" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDRestaurant" inverseName="orders" inverseEntity="LDRestaurant"/>
+        <relationship name="review" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDOrderReview" inverseName="order" inverseEntity="LDOrderReview"/>
+    </entity>
+    <entity name="LDOrderItem" representedClassName="LDOrderItem" syncable="YES">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="isSuitableForPush" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO"/>
+        <attribute name="note" optional="YES" attributeType="String" minValueString="1" maxValueString="10000"/>
+        <attribute name="quantity" optional="YES" attributeType="Integer 32" minValueString="1" maxValueString="1000000" defaultValueString="1" usesScalarValueType="NO"/>
+        <attribute name="syncRevision" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="menuItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDMenuItem" inverseName="orderItems" inverseEntity="LDMenuItem"/>
+        <relationship name="order" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDOrder" inverseName="items" inverseEntity="LDOrder"/>
+        <relationship name="orderedBasedOnPost" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDPost" inverseName="orderItemsFromPost" inverseEntity="LDPost"/>
+        <relationship name="orderItemAddons" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDOrderItemAddon" inverseName="orderItem" inverseEntity="LDOrderItemAddon"/>
+    </entity>
+    <entity name="LDOrderItemAddon" representedClassName="LDOrderItemAddon" syncable="YES">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="isSuitableForPush" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO"/>
+        <attribute name="quantity" attributeType="Integer 32" minValueString="1" maxValueString="1000000" defaultValueString="1" usesScalarValueType="YES"/>
+        <attribute name="syncRevision" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="menuItemAddon" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDMenuItemAddon" inverseName="orderItemAddons" inverseEntity="LDMenuItemAddon"/>
+        <relationship name="orderItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDOrderItem" inverseName="orderItemAddons" inverseEntity="LDOrderItem"/>
+    </entity>
+    <entity name="LDOrderReview" representedClassName="LDOrderReview" syncable="YES">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="deliveryRating" optional="YES" attributeType="Double" minValueString="1" maxValueString="5" defaultValueString="1" usesScalarValueType="YES"/>
+        <attribute name="isSuitableForPush" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO"/>
+        <attribute name="restaurantRating" optional="YES" attributeType="Double" minValueString="1" maxValueString="5" defaultValueString="1" usesScalarValueType="YES"/>
+        <attribute name="syncRevision" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="systemRating" optional="YES" attributeType="Double" minValueString="1" maxValueString="10" defaultValueString="1" usesScalarValueType="YES"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="media" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDMedia" inverseName="review" inverseEntity="LDMedia"/>
+        <relationship name="order" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDOrder" inverseName="review" inverseEntity="LDOrder"/>
+    </entity>
+    <entity name="LDPaymentInformation" representedClassName="LDPaymentInformation" syncable="YES">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="bankAccount" optional="YES" attributeType="String" minValueString="15" maxValueString="35" regularExpressionString="(BH|AE|SA|LB|EG|QA|JO|KW|OM)[0-9]{2}[A-Z]{0,4}[0-9A-Z]{11,31}$"/>
+        <attribute name="brandName" optional="YES" attributeType="String" minValueString="3" maxValueString="100"/>
+        <attribute name="brandNameArabic" optional="YES" attributeType="String" minValueString="3" maxValueString="100"/>
+        <attribute name="businessId" optional="YES" attributeType="String"/>
+        <attribute name="contactPersonFirstName" optional="YES" attributeType="String" minValueString="3" maxValueString="100"/>
+        <attribute name="contactPersonLastName" optional="YES" attributeType="String" minValueString="3" maxValueString="100"/>
+        <attribute name="contactPersonTitle" optional="YES" attributeType="String" minValueString="2" maxValueString="100"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="destinationId" optional="YES" attributeType="String"/>
+        <attribute name="email" optional="YES" attributeType="String" minValueString="1" maxValueString="1000" regularExpressionString="\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b"/>
+        <attribute name="isSaved" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO"/>
+        <attribute name="isSuitableForPush" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO"/>
+        <attribute name="phoneCode" optional="YES" attributeType="String" minValueString="2" maxValueString="10" regularExpressionString="^\+[1-9][0-9]{0,8}$"/>
+        <attribute name="phoneNumber" optional="YES" attributeType="String" minValueString="3" maxValueString="50" regularExpressionString="^[0-9]{5,15}$"/>
+        <attribute name="sector" optional="YES" attributeType="String" minValueString="3" maxValueString="100"/>
+        <attribute name="syncRevision" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="brand" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDBrand" inverseName="paymentInformation" inverseEntity="LDBrand"/>
+        <relationship name="influencer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDCustomer" inverseName="paymentInformation" inverseEntity="LDCustomer"/>
+    </entity>
+    <entity name="LDPoll" representedClassName="LDPoll" syncable="YES">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="isSuitableForPush" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO"/>
+        <attribute name="syncRevision" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="text" attributeType="String" minValueString="1" maxValueString="1000"/>
+        <attribute name="textArabic" optional="YES" attributeType="String" minValueString="1" maxValueString="1000"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="answers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDPollAnswer" inverseName="poll" inverseEntity="LDPollAnswer"/>
+        <relationship name="post" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDPost" inverseName="poll" inverseEntity="LDPost"/>
+    </entity>
+    <entity name="LDPollAnswer" representedClassName="LDPollAnswer" syncable="YES">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="isSuitableForPush" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO"/>
+        <attribute name="syncRevision" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="text" attributeType="String" minValueString="1" maxValueString="1000"/>
+        <attribute name="textArabic" optional="YES" attributeType="String" minValueString="1" maxValueString="1000"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="voteCount" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="poll" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDPoll" inverseName="answers" inverseEntity="LDPoll"/>
+        <relationship name="votes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDCustomer" inverseName="pollAnswers" inverseEntity="LDCustomer"/>
+    </entity>
+    <entity name="LDPost" representedClassName="LDPost" syncable="YES">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="isPublished" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="isSuitableForPush" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO"/>
+        <attribute name="likeCount" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="publicationDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="syncRevision" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="text" attributeType="String" minValueString="1" maxValueString="1000"/>
+        <attribute name="textArabic" optional="YES" attributeType="String" minValueString="1" maxValueString="1000"/>
+        <attribute name="type" attributeType="String" defaultValueString="Text" regularExpressionString="^(Basic|Brand|Order|Poll|MenuItem)$"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="authoredBy" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDCMSUser" inverseName="authoredPosts" inverseEntity="LDCMSUser"/>
+        <relationship name="brand" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDBrand" inverseName="posts" inverseEntity="LDBrand"/>
+        <relationship name="influencer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDCustomer" inverseName="postsCreated" inverseEntity="LDCustomer"/>
+        <relationship name="likedByCustomers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDCustomer" inverseName="likedPosts" inverseEntity="LDCustomer"/>
+        <relationship name="media" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDMedia" inverseName="post" inverseEntity="LDMedia"/>
+        <relationship name="menuItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDMenuItem" inverseName="posts" inverseEntity="LDMenuItem"/>
+        <relationship name="order" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDOrder" inverseName="posts" inverseEntity="LDOrder"/>
+        <relationship name="orderItemsFromPost" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDOrderItem" inverseName="orderedBasedOnPost" inverseEntity="LDOrderItem"/>
+        <relationship name="ordersFromPost" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDOrder" inverseName="orderedBasedOnPost" inverseEntity="LDOrder"/>
+        <relationship name="poll" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDPoll" inverseName="post" inverseEntity="LDPoll"/>
+    </entity>
+    <entity name="LDRestaurant" representedClassName="LDRestaurant" syncable="YES">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="deliveryPrice" attributeType="Integer 64" minValueString="0" maxValueString="10000000" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="deliveryTimeInMinutes" optional="YES" attributeType="Integer 32" minValueString="0" maxValueString="600" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="isEnabled" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="isSuitableForPush" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String" minValueString="2" maxValueString="100"/>
+        <attribute name="nameArabic" optional="YES" attributeType="String" minValueString="2" maxValueString="100"/>
+        <attribute name="phone" optional="YES" attributeType="String" minValueString="5" maxValueString="50" regularExpressionString="^\+[1-9][0-9]{2,3}[0-9]{6,12}$"/>
+        <attribute name="rating" optional="YES" attributeType="Double" minValueString="1" maxValueString="5" usesScalarValueType="YES"/>
+        <attribute name="syncRevision" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDLocation" inverseName="restaurant" inverseEntity="LDLocation"/>
+        <relationship name="areas" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDArea" inverseName="restaurants" inverseEntity="LDArea"/>
+        <relationship name="availableMenuItems" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDMenuItem" inverseName="availableForRestaurants" inverseEntity="LDMenuItem"/>
+        <relationship name="brand" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDBrand" inverseName="restaurants" inverseEntity="LDBrand"/>
+        <relationship name="cmsUsers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDCMSUser" inverseName="restaurant" inverseEntity="LDCMSUser"/>
+        <relationship name="media" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDMedia" inverseName="restaurant" inverseEntity="LDMedia"/>
+        <relationship name="orders" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDOrder" inverseName="restaurant" inverseEntity="LDOrder"/>
+    </entity>
+    <entity name="LDSynchData" representedClassName="LDSynchData" syncable="YES">
+        <attribute name="counter" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="LDUser" representedClassName="LDUser" syncable="YES">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="badgeCount" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="birthDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="deviceLanguage" optional="YES" attributeType="String" minValueString="1" maxValueString="10" regularExpressionString="(ar|en)"/>
+        <attribute name="email" attributeType="String" minValueString="1" maxValueString="1000" regularExpressionString="\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b"/>
+        <attribute name="enabled" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="gender" attributeType="String" minValueString="1" regularExpressionString="(Male|Female|Other)"/>
+        <attribute name="internalUserId" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isSuitableForPush" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO"/>
+        <attribute name="nationality" attributeType="String" minValueString="1" maxValueString="100"/>
+        <attribute name="phone" attributeType="String" minValueString="5" maxValueString="50" regularExpressionString="^\+[1-9][0-9]{2,3}[0-9]{6,12}$"/>
+        <attribute name="syncRevision" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="username" attributeType="String" minValueString="2" maxValueString="100"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="chatRooms" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDChatRoom" inverseName="participants" inverseEntity="LDChatRoom"/>
+        <relationship name="customer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDCustomer" inverseName="baseUser" inverseEntity="LDCustomer"/>
+        <relationship name="driver" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDDriver" inverseName="baseUser" inverseEntity="LDDriver"/>
+        <relationship name="profileMedia" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDMedia" inverseName="user" inverseEntity="LDMedia"/>
+        <relationship name="sentMessages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDMessage" inverseName="sender" inverseEntity="LDMessage"/>
+    </entity>
+    <entity name="LDVerificationRequest" representedClassName="LDVerificationRequest" syncable="YES">
+        <attribute name="active" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="isSuitableForPush" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO"/>
+        <attribute name="status" attributeType="String" defaultValueString="Pending" regularExpressionString="^(Pending|Rejected|Accepted)$"/>
+        <attribute name="syncRevision" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="driver" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LDDriver" inverseName="verificationRequests" inverseEntity="LDDriver"/>
+        <relationship name="drivingLicensePhotos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDMedia" inverseName="verificationDrivingLicense" inverseEntity="LDMedia"/>
+        <relationship name="idDocumentPhotos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LDMedia" inverseName="verificationId" inverseEntity="LDMedia"/>
+    </entity>
+    <elements>
+        <element name="LDArea" positionX="-664.0546875" positionY="456.95703125" width="128" height="208"/>
+        <element name="LDBrand" positionX="676.98046875" positionY="287.57421875" width="128" height="418"/>
+        <element name="LDBrandCategory" positionX="450.4921875" positionY="404.83203125" width="128" height="178"/>
+        <element name="LDChatRoom" positionX="-291.23828125" positionY="-299.96875" width="128" height="178"/>
+        <element name="LDCMSUser" positionX="79.50390625" positionY="-338.2109375" width="128" height="268"/>
+        <element name="LDCompany" positionX="290.578125" positionY="-341.55078125" width="128" height="223"/>
+        <element name="LDCustomer" positionX="-477.4140625" positionY="-357.234375" width="128" height="373"/>
+        <element name="LDDelivery" positionX="-90.76171875" positionY="-343.04296875" width="128" height="313"/>
+        <element name="LDDiscount" positionX="-16.0625" positionY="-1.50390625" width="128" height="343"/>
+        <element name="LDDriver" positionX="667.609375" positionY="-336.59765625" width="128" height="223"/>
+        <element name="LDFoodTag" positionX="248.80078125" positionY="380.5390625" width="128" height="178"/>
+        <element name="LDLocation" positionX="-663.65625" positionY="56.64453125" width="128" height="433"/>
+        <element name="LDMedia" positionX="674.609375" positionY="-137.7578125" width="128" height="448"/>
+        <element name="LDMenuGroup" positionX="402.87109375" positionY="165.81640625" width="128" height="223"/>
+        <element name="LDMenuItem" positionX="176.13671875" positionY="-102.671875" width="128" height="373"/>
+        <element name="LDMenuItemAddon" positionX="32.5234375" positionY="304.18359375" width="128" height="238"/>
+        <element name="LDMessage" positionX="477.390625" positionY="-345.20703125" width="128" height="193"/>
+        <element name="LDOrder" positionX="-465.3984375" positionY="14.35546875" width="147.58984375" height="448"/>
+        <element name="LDOrderItem" positionX="-291.6875" positionY="-82.34375" width="128" height="223"/>
+        <element name="LDOrderItemAddon" positionX="-135.85546875" positionY="342.4453125" width="128" height="178"/>
+        <element name="LDOrderReview" positionX="-189.11328125" positionY="100.11328125" width="128" height="208"/>
+        <element name="LDPaymentInformation" positionX="160" positionY="192" width="128" height="343"/>
+        <element name="LDPoll" positionX="-450" positionY="-198" width="128" height="193"/>
+        <element name="LDPollAnswer" positionX="-441" positionY="-189" width="128" height="208"/>
+        <element name="LDPost" positionX="-459" positionY="-207" width="128" height="373"/>
+        <element name="LDRestaurant" positionX="-288.9921875" positionY="308.19921875" width="128" height="343"/>
+        <element name="LDSynchData" positionX="-664.140625" positionY="502.79296875" width="128" height="103"/>
+        <element name="LDUser" positionX="-650.71875" positionY="-349.78125" width="128" height="358"/>
+        <element name="LDVerificationRequest" positionX="378.44921875" positionY="-94.93359375" width="128" height="193"/>
+    </elements>
+</model>

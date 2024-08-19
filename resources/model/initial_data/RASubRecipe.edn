@@ -1,0 +1,9 @@
+[{:RASubRecipe/amount 1250
+  :RASubRecipe/subRecipe "Ciasto na pizze",
+  :RASubRecipe/recipe "capriciosa"}
+ {:RASubRecipe/amount 1000
+  :RASubRecipe/subRecipe "Ciasto na pizze",
+  :RASubRecipe/recipe "margherita"}
+{:RASubRecipe/amount 1000
+  :RASubRecipe/subRecipe "Przykładowy przepis",
+  :RASubRecipe/recipe "Przykładowy przepis gniazdo"}]

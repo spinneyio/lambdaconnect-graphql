@@ -1,0 +1,144 @@
+{:RAOwner.me {:constraint [= :internalUserId :user/uuid]
+              :permissions {:modify true
+                            :create false
+                            :protected-fields ["internalUserId" "subscriptionState"
+                                               "subscriptionToBuy" "refundableTransactions"
+                                               "paymentProfiles" "currentPaymentProfile"
+                                               "referral"]}}
+
+ :RARestaurant.activeOfOwner {:constraint (and [= :owner :RAOwner.me]
+                                               [= :subscriptionActive true])
+                              :permissions {:modify true
+                                            :create true
+                                            :protected-fields ["unitSystem" "mainMenu" "owner"]}}
+
+ :RACategory.activeOfOwner {:constraint [= :restaurant :RARestaurant.activeOfOwner]
+                            :permissions {:modify true
+                                          :create true}}
+
+ :RAIngredient.activeOfOwner {:constraint [= :restaurant :RARestaurant.activeOfOwner]
+                              :permissions {:modify true
+                                            :create true}}
+
+ :RAMenu.activeOfOwner {:constraint [= :restaurant :RARestaurant.activeOfOwner]
+                        :permissions {:modify true
+                                      :create true
+                                      :protected-fields ["isMainMenuOfARestaurant"]}}
+
+ :RARecipe.activeOfOwner {:constraint [contains? :menus :RAMenu.activeOfOwner]
+                          :permissions {:modify true
+                                        :create true}}
+
+ :RASubRecipe.activeOfOwner {:constraint (or [= :recipe :RARecipe.activeOfOwner]
+                                             [= :subRecipe :RARecipe.activeOfOwner])
+                             :permissions {:modify true
+                                           :create true}}
+
+ :RARecipePreparation.activeOfOwner {:constraint [= :recipe :RARecipe.activeOfOwner]
+                                     :permissions {:modify true
+                                                   :create true}}
+
+ :RARecipeIngredient.activeOfOwner {:constraint [= :recipe :RARecipe.activeOfOwner]
+                                    :permissions {:modify true
+                                                  :create true}}
+
+ :RAIngredient.activeOfOwnerFromRecipeIngredient {:constraint [contains? :recipeIngredients :RARecipeIngredient.activeOfOwner]
+                                                  :permissions {:modify true
+                                                                :create true}}
+
+ :RABCGMatrixSimulation.activeOfOwner {:constraint [= :restaurant :RARestaurant.activeOfOwner]
+                                       :permissions {:modify true
+                                                     :create true
+                                                     :protected-fields ["categoryName" "endDate" "name" "startDate"
+                                                                        "category" "recipeSnapshots" "restaurant"]}}
+
+ :RABCGMatrixRecipeSnapshot.activeOfOwner {:constraint [= :simulation :RABCGMatrixSimulation.activeOfOwner]
+                                           :permissions {:modify false
+                                                         :create true}}
+ 
+ :RARestaurant.ofOwner {:constraint [= :owner :RAOwner.me]
+                        :permissions {:modify true
+                                      :create true
+                                      :protected-fields ["unitSystem" "mainMenu" "owner"]}}
+ 
+ :RAEmployee.ofOwner {:constraint [= :owner :RAOwner.me]
+                      :permissions {:modify true
+                                    :create true
+                                    :protected-fields ["internalUserId"]}}
+ 
+ :RASubscriptionProduct.ofOwner {:constraint (or [contains? :orders :RASubscriptionOrder.ofOwner]
+                                                 [contains? :ownersToBeBoughtBy :RAOwner.me])
+                                 :permissions {:modify false
+                                               :create false}}
+ 
+ :RAPrice.ofOwner {:constraint [contains? :subscriptionTemplates :RASubscriptionProduct.ofOwner]
+                   :permissions {:modify false
+                                 :create false}}
+ 
+ :RASubscriptionState.ofOwner {:constraint [= :owner :RAOwner.me]
+                               :permissions {:modify true
+                                             :create false
+                                             :writable-fields ["invoiceAddress" "invoiceCompanyName"
+                                                               "invoiceCompanyNumber" "invoiceEmail"
+                                                               "userNotification" "sendInvoices"]}}
+ 
+ :RASubscriptionAction.ofOwner {:constraint [= :state :RASubscriptionState.ofOwner]
+                                :permissions {:modify false
+                                              :create false}}
+ 
+ :RASubscriptionOrder.ofOwner {:constraint [= :subscriptionAction :RASubscriptionAction.ofOwner]
+                               :permissions {:modify false
+                                             :create false}}
+ 
+ :RARefundableTransaction.ofOwner {:constraint [= :owner :RAOwner.me]
+                                   :permissions {:modify false
+                                                 :create false}}
+ 
+ :RATransaction.ofOwner {:constraint (or [= :refundableTransaction :RARefundableTransaction.ofOwner]
+                                         [= :subscriptionOrder :RASubscriptionOrder.ofOwner])
+                         :permissions {:modify false
+                                       :create false}}
+ 
+ :RAPayment.ofOwner {:constraint [= :transaction :RATransaction.ofOwner]
+                     :permissions {:modify false
+                                   :create false}}
+ 
+ :RAPaymentProfile.ofOwner {:constraint [= :owner :RAOwner.me]
+                            :permissions {:modify false
+                                          :create false}}
+ 
+ :RAPromoCode.ofOwner {:constraint [= :owner :RAOwner.me]
+                       :permissions {:modify false
+                                     :create false}}
+ 
+ :RAUnit.all {:constraint :all
+              :permissions {:modify true
+                            :writable-fields ["ingredients", "recipeIngredients"]
+                            :create false}}
+ 
+ :RAVatPercentage.all {:constraint :all
+                       :permissions {:modify true
+                                     :writable-fields ["owner", "recipes"]
+                                     :create false}}
+ 
+ :RAAllergen.all {:constraint :all
+                  :permissions {:modify true
+                                :writable-fields ["ingredients"]
+                                :create false}}
+ 
+ :RALanguage.all {:constraint :all
+                  :permissions {:modify false
+                                :create false}}
+ 
+ :RAAllergenTranslation.all {:constraint :all
+                             :permissions {:modify false
+                                           :create false}}
+ 
+ :RAPrice.public {:constraint [contains? :subscriptionTemplates :RASubscriptionProduct.public]
+                  :permissions {:modify false
+                                :create false}}
+ 
+ :RASubscriptionProduct.public {:constraint (and [= :buyable true]
+                                                 [= :predefined true])
+                                :permissions {:modify false
+                                              :create false}}}

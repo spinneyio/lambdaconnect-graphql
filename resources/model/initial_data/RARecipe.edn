@@ -1,0 +1,107 @@
+[{:RARecipe/numberOfPortionsProduced 100,
+  :RARecipe/menus ["Komponenty"],
+  :RARecipe/vatPercentage "0",
+  :RARecipe/name "Przykładowy przepis"
+  :RARecipe/categories ["Podprzepisy"],
+  :RARecipe/numberOfPortionsToSell 100,
+  ;:RARecipe/photo "http://dummyimage.com/162x100.png/dddddd/000000",
+  :RARecipe/archived false
+  :RARecipe/grossPrice 1200,
+  :db/id "Przykładowy przepis"}
+ {:RARecipe/numberOfPortionsProduced 100,
+  :RARecipe/menus ["Komponenty"],
+  :RARecipe/vatPercentage "0",
+  :RARecipe/name "Przykładowy przepis gniazdo"
+  :RARecipe/categories ["Podprzepisy"],
+  :RARecipe/numberOfPortionsToSell 100,
+  ;:RARecipe/photo "http://dummyimage.com/162x100.png/dddddd/000000",
+  :RARecipe/archived false
+  :RARecipe/grossPrice 1200,
+  :db/id "Przykładowy przepis gniazdo"}
+ 
+ {:RARecipe/numberOfPortionsProduced 100,
+  :RARecipe/menus ["Komponenty"],
+  :RARecipe/vatPercentage "0",
+  :RARecipe/name "Ciasto na pizze"
+  :RARecipe/categories ["Podprzepisy"],
+  :RARecipe/numberOfPortionsToSell 100,
+  ;:RARecipe/photo "http://dummyimage.com/162x100.png/dddddd/000000",
+  :RARecipe/archived false
+  :RARecipe/grossPrice 4000,
+  :db/id "Ciasto na pizze"}
+
+ ;Dania główne
+ {:RARecipe/numberOfPortionsProduced 100,
+  :RARecipe/menus ["Menu główne" "Dania główne"],
+  :RARecipe/vatPercentage "5",
+  :RARecipe/name "capriciosa"
+  :RARecipe/categories ["Danie główne"],
+  :RARecipe/numberOfPortionsToSell 100,
+  ;:RARecipe/photo "http://dummyimage.com/162x100.png/dddddd/000000",
+  :RARecipe/archived false
+  :RARecipe/grossPrice 4000,
+  :db/id "capriciosa"}
+ {:RARecipe/numberOfPortionsProduced 100,
+  :RARecipe/menus ["Menu główne" "Dania główne"],
+  :RARecipe/vatPercentage "8",
+  :RARecipe/name "margherita"
+  :RARecipe/categories ["Danie główne" "Przystawka"],
+  :RARecipe/numberOfPortionsToSell 100,
+  ;:RARecipe/photo "http://dummyimage.com/162x100.png/dddddd/000000",
+  :RARecipe/archived false
+  :RARecipe/grossPrice 4000,
+  :db/id "margherita"}
+ {:RARecipe/numberOfPortionsProduced 100,
+  :RARecipe/menus ["Dania główne"],
+  :RARecipe/vatPercentage "23",
+  :RARecipe/name "Spaghetti bolognese"
+  :RARecipe/categories ["Danie główne"],
+  :RARecipe/numberOfPortionsToSell 100,
+  ;:RARecipe/photo "http://dummyimage.com/162x100.png/dddddd/000000",
+  :RARecipe/archived false
+  :RARecipe/grossPrice 4000,
+  :db/id "spaghetti bolognese"}
+
+ ;Menu główne
+ {:RARecipe/numberOfPortionsProduced 100,
+  :RARecipe/menus ["Menu główne"],
+  :RARecipe/vatPercentage "0",
+  :RARecipe/name "Kwaśnica"
+  :RARecipe/categories ["Danie główne" "Przystawka"],
+  :RARecipe/numberOfPortionsToSell 100,
+  ;:RARecipe/photo "http://dummyimage.com/162x100.png/dddddd/000000",
+  :RARecipe/archived false
+  :RARecipe/grossPrice 4000,
+  :db/id "Kwaśnica"}
+
+ ;Desery
+ {:RARecipe/numberOfPortionsProduced 100,
+  :RARecipe/menus ["Desery"],
+  :RARecipe/vatPercentage "5",
+  :RARecipe/name "Puchar lodowy"
+  :RARecipe/categories ["Deser"],
+  :RARecipe/numberOfPortionsToSell 100,
+  ;:RARecipe/photo "http://dummyimage.com/162x100.png/dddddd/000000",
+  :RARecipe/archived false
+  :RARecipe/grossPrice 4000,
+  :db/id "Puchar lodowy"}
+ {:RARecipe/numberOfPortionsProduced 100,
+  :RARecipe/menus ["Desery"],
+  :RARecipe/vatPercentage "8",
+  :RARecipe/name "Szarlotka na gorąco"
+  :RARecipe/categories ["Deser"],
+  :RARecipe/numberOfPortionsToSell 100,
+  ;:RARecipe/photo "http://dummyimage.com/162x100.png/dddddd/000000",
+  :RARecipe/archived false
+  :RARecipe/grossPrice 4000,
+  :db/id "szarlotka na gorąco"}
+ {:RARecipe/numberOfPortionsProduced 100,
+  :RARecipe/menus ["Desery"],
+  :RARecipe/vatPercentage "23",
+  :RARecipe/name "Gorąca czekolada"
+  :RARecipe/categories ["Deser"],
+  :RARecipe/numberOfPortionsToSell 100,
+  ;:RARecipe/photo "http://dummyimage.com/162x100.png/dddddd/000000",
+  :RARecipe/archived false
+  :RARecipe/grossPrice 4000,
+  :db/id "Gorąca czekolada"}]

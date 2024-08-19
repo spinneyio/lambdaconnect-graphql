@@ -1,0 +1,24 @@
+({:app/uuid #uuid "b2979af5-1a9c-447f-b52f-18837089792a",
+  :app/createdAt #inst "2021-11-09T00:40:27.221-00:00",
+  :app/updatedAt #inst "2023-02-06T11:13:51.007-00:00",
+  :app/active true,
+  :RAVatPercentage/ident__ true,
+  :RAVatPercentage/percentage 23}
+ {:app/uuid #uuid "418ade49-11cc-49e7-88de-58a49d1ebc7e",
+  :app/createdAt #inst "2021-12-17T03:53:24.789-00:00",
+  :app/updatedAt #inst "2023-02-06T11:14:36.666-00:00",
+  :app/active true,
+  :RAVatPercentage/ident__ true,
+  :RAVatPercentage/percentage 8}
+ {:app/uuid #uuid "7b02cc92-1b9e-4040-8854-d8cb184175a0",
+  :app/createdAt #inst "2022-01-25T12:40:54.609-00:00",
+  :app/updatedAt #inst "2023-02-06T11:13:51.007-00:00",
+  :app/active true,
+  :RAVatPercentage/ident__ true,
+  :RAVatPercentage/percentage 5}
+ {:app/uuid #uuid "961b180e-c741-4e89-a10f-165aac2e238b",
+  :app/createdAt #inst "2021-11-10T13:21:17.329-00:00",
+  :app/updatedAt #inst "2023-02-03T14:40:40.014-00:00",
+  :app/active true,
+  :RAVatPercentage/ident__ true,
+  :RAVatPercentage/percentage 0})

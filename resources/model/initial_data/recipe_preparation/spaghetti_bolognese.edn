@@ -1,0 +1,36 @@
+[{:RARecipePreparation/stepDescription
+  "Na głębokiej patelni rozgrzej około 2 łyżki oliwy z oliwek."
+  :RARecipePreparation/stepNo 1
+  :RARecipePreparation/recipe "spaghetti bolognese"}
+{:RARecipePreparation/stepDescription
+  "dodaj mięso, rozdrabniaj je np. widelcem, tak aby nie powstały grube mięsne grudki"
+  :RARecipePreparation/stepNo 2
+  :RARecipePreparation/recipe "spaghetti bolognese"}
+{:RARecipePreparation/stepDescription
+  "Całość podgrzewaj przez chwilę, dodaj passatę (przecier pomidorowy), gotuj na małym ogniu około 30 minut."
+  :RARecipePreparation/stepNo 3
+  :RARecipePreparation/recipe "spaghetti bolognese"}
+{:RARecipePreparation/stepDescription
+  "Makaron ugotuj al dente, podawaj go z sosem, serem, i bazylią"
+  :RARecipePreparation/stepNo 4
+  :RARecipePreparation/recipe "spaghetti bolognese"}
+{:RARecipePreparation/stepDescription
+  "Ciesz się wspaniałym smakiem tej tradycyjnej włoskiej potrawy."
+  :RARecipePreparation/stepNo 5
+  :RARecipePreparation/recipe "spaghetti bolognese"}
+{:RARecipePreparation/stepDescription
+  "Nie zapomnij o dodatkowym sosie pomidorowym, który możesz podać na boku."
+  :RARecipePreparation/stepNo 6
+  :RARecipePreparation/recipe "spaghetti bolognese"}
+{:RARecipePreparation/stepDescription
+  "Niech na twarzy twoich gości pojawi się uśmiech, gdy zobaczą jak smacznie przygotowałaś potrawę."
+  :RARecipePreparation/stepNo 7
+  :RARecipePreparation/recipe "spaghetti bolognese"}
+{:RARecipePreparation/stepDescription
+  "Nie zapomnij o swojej teściowej, podaj jej podwójną porcję :)"
+  :RARecipePreparation/stepNo 8
+  :RARecipePreparation/recipe "spaghetti bolognese"}
+{:RARecipePreparation/stepDescription
+  "Odpocznij ponieważ właśnie osiągnąłeś spełnienie jako kucharz"
+  :RARecipePreparation/stepNo 9
+  :RARecipePreparation/recipe "spaghetti bolognese"}]

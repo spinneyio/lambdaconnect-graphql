@@ -1,0 +1,28 @@
+[{:RARecipePreparation/stepDescription
+  "Przecier pomidorowy w rondelku razem z oliwą, solą, oraz cukrem. Zmiksować lub rozdrobnić widelcem a następnie gotować przez około 15 minut pod przykryciem."
+  :RARecipePreparation/stepNo 1
+  :RARecipePreparation/recipe "margherita"}
+{:RARecipePreparation/stepDescription
+  "Wyrośnięte ciasto podzielić na 3 części, każdą część rozpłaszczyć na dnie blaszki (tortownicy) posmarowanej oliwą, o średnicy około 23 cm. Odstawić na około 1/2 godziny do podrośnięcia w ciepłe miejsce bez przeciągów, pod przykryciem ze ściereczki. Nagrzać piekarnik do maksymalnej temperatury 250℃"
+  :RARecipePreparation/stepNo 2
+  :RARecipePreparation/recipe "margherita"}
+{:RARecipePreparation/stepDescription
+  " Podrośnięte ciasto na pizze posmarować sosem pomidorowym rysując okręgi (może pozostać około połowa sosu do wykorzystania innym razem). Posypać tartym serem."
+  :RARecipePreparation/stepNo 3
+  :RARecipePreparation/recipe "margherita"}
+{:RARecipePreparation/stepDescription
+  "Włożyć pierwszą pizzę do piekarnika (lub dwie na raz na jednym poziomie piekarnika jeśli się zmieszczą). Blaszki z pizzą stawiać na kratkę piekarnika ustawioną w środkowej jego części."
+  :RARecipePreparation/stepNo 4
+  :RARecipePreparation/recipe "margherita"}
+{:RARecipePreparation/stepDescription
+  "Piec przez około 9 - 10 minut, aż boki pizzy lekko się zarumienią a spód będzie upieczony i chrupiący. Wyjąć pizzę z piekarnika i posypać listkami bazylii."
+  :RARecipePreparation/stepNo 5
+  :RARecipePreparation/recipe "margherita"}
+{:RARecipePreparation/stepDescription
+  "Aby ser na pizzy był miękki i ciągnący można piec pizzę posypując połową sera, resztę dać pod koniec pieczenia."
+  :RARecipePreparation/stepNo 6
+  :RARecipePreparation/recipe "margherita"}
+{:RARecipePreparation/stepDescription
+  "Jeśli dajemy na pizzę szynkę - przykrywamy nią ser na pizzy i pieczemy jak w przepisie - dając ser na samym początku, na koniec już go nie dodając."
+  :RARecipePreparation/stepNo 7
+  :RARecipePreparation/recipe "margherita"}]

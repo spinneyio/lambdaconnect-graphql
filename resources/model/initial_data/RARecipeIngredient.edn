@@ -1,0 +1,172 @@
+[{:RARecipeIngredient/ingredient "Żeberka surowe",
+  :RARecipeIngredient/amount 1000000,
+  :RARecipeIngredient/unit "kg",
+  :RARecipeIngredient/recipe "Przykładowy przepis"}
+ {:RARecipeIngredient/ingredient "Mleko",
+  :RARecipeIngredient/amount 500000,
+  :RARecipeIngredient/unit "ml",
+  :RARecipeIngredient/recipe "Przykładowy przepis"}
+ {:RARecipeIngredient/ingredient "Żeberka surowe",
+  :RARecipeIngredient/amount 1000000,
+  :RARecipeIngredient/unit "kg",
+  :RARecipeIngredient/recipe "Przykładowy przepis gniazdo"}
+ {:RARecipeIngredient/ingredient "Woda",
+  :RARecipeIngredient/amount 2250000,
+  :RARecipeIngredient/unit "ml",
+  :RARecipeIngredient/recipe "Kwaśnica"}
+ {:RARecipeIngredient/ingredient "Żeberka surowe",
+  :RARecipeIngredient/amount 700000,
+  :RARecipeIngredient/unit "g",
+  :RARecipeIngredient/recipe "Kwaśnica"}
+ {:RARecipeIngredient/ingredient "Żeberka wędzone",
+  :RARecipeIngredient/amount 400000,
+  :RARecipeIngredient/unit "g",
+  :RARecipeIngredient/recipe "Kwaśnica"}
+ {:RARecipeIngredient/ingredient "Ziemniaki",
+  :RARecipeIngredient/amount 700000,
+  :RARecipeIngredient/unit "g",
+  :RARecipeIngredient/recipe "Kwaśnica"}
+ {:RARecipeIngredient/ingredient "Kiszona kapusta",
+  :RARecipeIngredient/amount 400000,
+  :RARecipeIngredient/unit "g",
+  :RARecipeIngredient/recipe "Kwaśnica"}
+ {:RARecipeIngredient/ingredient "Sól",
+  :RARecipeIngredient/amount 5000,
+  :RARecipeIngredient/unit "g",
+  :RARecipeIngredient/recipe "capriciosa"}
+ {:RARecipeIngredient/ingredient "Cukier",
+  :RARecipeIngredient/amount 5000,
+  :RARecipeIngredient/unit "g",
+  :RARecipeIngredient/recipe "capriciosa"}
+ {:RARecipeIngredient/ingredient "Mozzarella",
+  :RARecipeIngredient/amount 256000,
+  :RARecipeIngredient/unit "g",
+  :RARecipeIngredient/recipe "capriciosa"}
+ {:RARecipeIngredient/ingredient "Szynka",
+  :RARecipeIngredient/amount 300000,
+  :RARecipeIngredient/unit "g",
+  :RARecipeIngredient/recipe "capriciosa"}
+ {:RARecipeIngredient/ingredient "Pieczarki",
+  :RARecipeIngredient/amount 240000,
+  :RARecipeIngredient/unit "g",
+  :RARecipeIngredient/recipe "capriciosa"}
+ {:RARecipeIngredient/ingredient "Mąka",
+  :RARecipeIngredient/amount 30000,
+  :RARecipeIngredient/unit "g",
+  :RARecipeIngredient/recipe "capriciosa"}
+ {:RARecipeIngredient/ingredient "Oliwa z oliwek",
+  :RARecipeIngredient/amount 10000,
+  :RARecipeIngredient/unit "ml",
+  :RARecipeIngredient/recipe "capriciosa"}
+ {:RARecipeIngredient/ingredient "Przecier pomidorowy",
+  :RARecipeIngredient/amount 400000,
+  :RARecipeIngredient/unit "g",
+  :RARecipeIngredient/recipe "capriciosa"}
+ {:RARecipeIngredient/ingredient "Przecier pomidorowy",
+  :RARecipeIngredient/amount 200000,
+  :RARecipeIngredient/unit "g",
+  :RARecipeIngredient/recipe "margherita"}
+ {:RARecipeIngredient/ingredient "Oliwa z oliwek",
+  :RARecipeIngredient/amount 10000,
+  :RARecipeIngredient/unit "ml",
+  :RARecipeIngredient/recipe "margherita"}
+ {:RARecipeIngredient/ingredient "Mozzarella",
+  :RARecipeIngredient/amount 300000,
+  :RARecipeIngredient/unit "g",
+  :RARecipeIngredient/recipe "margherita"}
+ {:RARecipeIngredient/ingredient "Sól",
+  :RARecipeIngredient/amount 5000,
+  :RARecipeIngredient/unit "g",
+  :RARecipeIngredient/recipe "margherita"}
+ {:RARecipeIngredient/ingredient "Drożdże",
+  :RARecipeIngredient/amount 25000,
+  :RARecipeIngredient/unit "g",
+  :RARecipeIngredient/recipe "Ciasto na pizze"}
+ {:RARecipeIngredient/ingredient "Woda",
+  :RARecipeIngredient/amount 150000,
+  :RARecipeIngredient/unit "ml",
+  :RARecipeIngredient/recipe "Ciasto na pizze"}
+ {:RARecipeIngredient/ingredient "Cukier",
+  :RARecipeIngredient/amount 5000,
+  :RARecipeIngredient/unit "g",
+  :RARecipeIngredient/recipe "Ciasto na pizze"}
+ {:RARecipeIngredient/ingredient "Mąka",
+  :RARecipeIngredient/amount 250000,
+  :RARecipeIngredient/unit "g",
+  :RARecipeIngredient/recipe "Ciasto na pizze"}
+ {:RARecipeIngredient/ingredient "Sól",
+  :RARecipeIngredient/amount 10000,
+  :RARecipeIngredient/unit "g",
+  :RARecipeIngredient/recipe "Ciasto na pizze"}
+ {:RARecipeIngredient/ingredient "Oliwa z oliwek",
+  :RARecipeIngredient/amount 10000,
+  :RARecipeIngredient/unit "ml",
+  :RARecipeIngredient/recipe "Ciasto na pizze"}
+ {:RARecipeIngredient/ingredient "Przecier pomidorowy",
+  :RARecipeIngredient/amount 300000,
+  :RARecipeIngredient/unit "g",
+  :RARecipeIngredient/recipe "spaghetti bolognese"}
+ {:RARecipeIngredient/ingredient "Mielona wołowina",
+  :RARecipeIngredient/amount 300000,
+  :RARecipeIngredient/unit "g",
+  :RARecipeIngredient/recipe "spaghetti bolognese"}
+ {:RARecipeIngredient/ingredient "Parmezan",
+  :RARecipeIngredient/amount 30000,
+  :RARecipeIngredient/unit "g",
+  :RARecipeIngredient/recipe "spaghetti bolognese"}
+ {:RARecipeIngredient/ingredient "Sól",
+  :RARecipeIngredient/amount 5000,
+  :RARecipeIngredient/unit "g",
+  :RARecipeIngredient/recipe "spaghetti bolognese"}
+ {:RARecipeIngredient/ingredient "Makaron spaghetti",
+  :RARecipeIngredient/amount 300000,
+  :RARecipeIngredient/unit "g",
+  :RARecipeIngredient/recipe "spaghetti bolognese"}
+ {:RARecipeIngredient/ingredient "Bita śmietana",
+  :RARecipeIngredient/amount 200000,
+  :RARecipeIngredient/unit "g",
+  :RARecipeIngredient/recipe "Puchar lodowy"}
+ {:RARecipeIngredient/ingredient "Lody truskawkowe",
+  :RARecipeIngredient/amount 100000,
+  :RARecipeIngredient/unit "ml",
+  :RARecipeIngredient/recipe "Puchar lodowy"}
+ {:RARecipeIngredient/ingredient "Lody waniliowe",
+  :RARecipeIngredient/amount 100000,
+  :RARecipeIngredient/unit "ml",
+  :RARecipeIngredient/recipe "Puchar lodowy"}
+ {:RARecipeIngredient/ingredient "Pomarańcze",
+  :RARecipeIngredient/amount 200000,
+  :RARecipeIngredient/unit "g",
+  :RARecipeIngredient/recipe "Puchar lodowy"}
+ {:RARecipeIngredient/ingredient "Kiwi",
+  :RARecipeIngredient/amount 1000,
+  :RARecipeIngredient/unit "units",
+  :RARecipeIngredient/recipe "Puchar lodowy"}
+ {:RARecipeIngredient/ingredient "Lody waniliowe",
+  :RARecipeIngredient/amount 45000,
+  :RARecipeIngredient/unit "ml",
+  :RARecipeIngredient/recipe "szarlotka na gorąco"}
+ {:RARecipeIngredient/ingredient "Cynamon",
+  :RARecipeIngredient/amount 1000,
+  :RARecipeIngredient/unit "g",
+  :RARecipeIngredient/recipe "szarlotka na gorąco"}
+ {:RARecipeIngredient/ingredient "Szarlotka",
+  :RARecipeIngredient/amount 200000,
+  :RARecipeIngredient/unit "g",
+  :RARecipeIngredient/recipe "szarlotka na gorąco"}
+ {:RARecipeIngredient/ingredient "Bita śmietana",
+  :RARecipeIngredient/amount 50000,
+  :RARecipeIngredient/unit "g",
+  :RARecipeIngredient/recipe "Gorąca czekolada"}
+ {:RARecipeIngredient/ingredient "Mleko",
+  :RARecipeIngredient/amount 400000,
+  :RARecipeIngredient/unit "ml",
+  :RARecipeIngredient/recipe "Gorąca czekolada"}
+ {:RARecipeIngredient/ingredient "Cukier",
+  :RARecipeIngredient/amount 15000,
+  :RARecipeIngredient/unit "g",
+  :RARecipeIngredient/recipe "Gorąca czekolada"}
+ {:RARecipeIngredient/ingredient "Czekolada",
+  :RARecipeIngredient/amount 100000,
+  :RARecipeIngredient/unit "g",
+  :RARecipeIngredient/recipe "Gorąca czekolada"}]

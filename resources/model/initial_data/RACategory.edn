@@ -1,0 +1,20 @@
+({:RACategory/name "Przystawka",
+  :db/id "Przystawka",
+  :RACategory/restaurant "Restauracja Słoneczna"
+  :RACategory/predefined true
+  :RACategory/archived false}
+ {:RACategory/name "Danie główne",
+  :db/id "Danie główne",
+  :RACategory/restaurant "Restauracja Słoneczna"
+  :RACategory/predefined true
+  :RACategory/archived false}
+ {:RACategory/name "Deser"
+  :db/id "Deser",
+  :RACategory/restaurant "Restauracja Słoneczna"
+  :RACategory/predefined true
+  :RACategory/archived false}
+ {:RACategory/name "Podprzepisy",
+  :db/id "Podprzepisy",
+  :RACategory/restaurant "Restauracja Słoneczna"
+  :RACategory/predefined true
+  :RACategory/archived false})

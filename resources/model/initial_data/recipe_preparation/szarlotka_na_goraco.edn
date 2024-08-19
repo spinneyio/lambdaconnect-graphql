@@ -1,0 +1,24 @@
+[{:RARecipePreparation/stepDescription
+  "Z gotowej szarlotki, z której korzystamy wykroić kwadratowy kawałek o boku długości pomiędzy 7 a 15 centymetrów"
+  :RARecipePreparation/stepNo 1
+  :RARecipePreparation/recipe "szarlotka na gorąco"}
+ {:RARecipePreparation/stepDescription
+  "Nagrzać piekaranik na 123 000 stopni Beuforta i włożyć do niego szarlotkę. Piec przez 5 minut."
+  :RARecipePreparation/stepNo 2
+  :RARecipePreparation/recipe "szarlotka na gorąco"}
+ {:RARecipePreparation/stepDescription
+  "Po tym czasi podgrzaną szarlotkę wyciągnąć z piekarnika i zjeść."
+  :RARecipePreparation/stepNo 3
+  :RARecipePreparation/recipe "szarlotka na gorąco"}
+ {:RARecipePreparation/stepDescription
+  "Hola! Przecież to nie dla ciebie łakomco jeden! Nie ma tu nic do zjedzenia dla ciebie!"
+  :RARecipePreparation/stepNo 4
+  :RARecipePreparation/recipe "szarlotka na gorąco"}
+ {:RARecipePreparation/stepDescription
+  "Umieśc szarlokte na talerzu i podaj gałke lodów obok niej"
+  :RARecipePreparation/stepNo 5
+  :RARecipePreparation/recipe "szarlotka na gorąco"}
+ {:RARecipePreparation/stepDescription
+  "Szarlotke oprusz delikatnie, niby to głaszcząc małego kotka, poprusz cynamonem i podawaj"
+  :RARecipePreparation/stepNo 6
+  :RARecipePreparation/recipe "szarlotka na gorąco"}]

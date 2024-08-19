@@ -1,0 +1,20 @@
+[{:RAMenu/name "Menu główne",
+  :db/id "Menu główne",
+  :RAMenu/restaurant "Restauracja Słoneczna"
+  :RAMenu/isMainMenuOfARestaurant true
+  :RAMenu/archived false}
+ {:RAMenu/name "Dania główne",
+  :db/id "Dania główne",
+  :RAMenu/restaurant "Restauracja Słoneczna"
+  :RAMenu/isMainMenuOfARestaurant false
+  :RAMenu/archived false}
+ {:RAMenu/name "Desery",
+  :db/id "Desery",
+  :RAMenu/isMainMenuOfARestaurant false
+  :RAMenu/restaurant "Restauracja Słoneczna"
+  :RAMenu/archived false}
+ {:RAMenu/name "Komponenty",
+  :db/id "Komponenty",
+  :RAMenu/restaurant "Restauracja Słoneczna"
+  :RAMenu/isMainMenuOfARestaurant false
+  :RAMenu/archived false}]

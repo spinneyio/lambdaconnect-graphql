@@ -1,0 +1,16 @@
+[{:RARecipePreparation/stepDescription
+  "Składniki na sos do pizzy połącz ze sobą tak, by nie było grudek, dodaj mini kostkę czosnek Knorr i dopraw pieprzem do smaku"
+  :RARecipePreparation/stepNo 1
+  :RARecipePreparation/recipe "capriciosa"}
+{:RARecipePreparation/stepDescription
+  "Wyrośnięte ciasto podziel na trzy części. Stolnicę lub blat stołu podsyp mąką, połóż ciasto i rozwałkuj lub uformuj placek ręcznie. Placek powinien mieć około 28 centymetrów średnicy i 1 centymetr grubości."
+  :RARecipePreparation/stepNo 2
+  :RARecipePreparation/recipe "capriciosa"}
+{:RARecipePreparation/stepDescription
+  "Placki umieść na blasze i posmaruj z wierzchu wcześniej przygotowanym sosem starając się zachować centymetr odstępu od rantu placka."
+  :RARecipePreparation/stepNo 3
+  :RARecipePreparation/recipe "capriciosa"}
+{:RARecipePreparation/stepDescription
+  "Pizzę posyp po wierzchu szynką, pieczarkami, oliwkami i serem. Piecz w nagrzanym do 200 stopni piekarniku około 20 minut."
+  :RARecipePreparation/stepNo 4
+  :RARecipePreparation/recipe "capriciosa"}]

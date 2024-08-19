@@ -1,0 +1,28 @@
+[{:RARecipePreparation/stepDescription
+  "Do puchary dodać lody truskowowe i na nie wnieść lody waniliowe."
+  :RARecipePreparation/stepNo 1
+  :RARecipePreparation/recipe "Puchar lodowy"}
+ {:RARecipePreparation/stepDescription
+  "Pokroic pomarańcze i kiwi na plasterki"
+  :RARecipePreparation/stepNo 2
+  :RARecipePreparation/recipe "Puchar lodowy"}
+ {:RARecipePreparation/stepDescription
+  "Pokrojone uprzednio owoce umieścić na lodach"
+  :RARecipePreparation/stepNo 3
+  :RARecipePreparation/recipe "Puchar lodowy"}
+ {:RARecipePreparation/stepDescription
+  "Udekorowac puchar przy pomocy bitej śmietany"
+  :RARecipePreparation/stepNo 4
+  :RARecipePreparation/recipe "Puchar lodowy"}
+ {:RARecipePreparation/stepDescription
+  "Generyczny krok słuzący wypełenieniu mniejsca, nie ma on żadnego znaczenia ani sensu proszę nie zwraca na mnie uwagi ale mimio to chciałem gorąco z tego miejsca pozdrowić moją mamę oraz tatę! Bez nich nie byłbym tu gdzie jestem."
+  :RARecipePreparation/stepNo 5
+  :RARecipePreparation/recipe "Puchar lodowy"}
+ {:RARecipePreparation/stepDescription
+  "Generyczny krok słuzący wypełenieniu mniejsca, nie ma on żadnego znaczenia ani sensu proszę nie zwraca na mnie uwagi ale mimio to chciałem gorąco z tego miejsca pozdrowić moją mamę oraz tatę! Bez nich nie byłbym tu gdzie jestem."
+  :RARecipePreparation/stepNo 6
+  :RARecipePreparation/recipe "Puchar lodowy"}
+ {:RARecipePreparation/stepDescription
+  "Generyczny krok słuzący wypełenieniu mniejsca, nie ma on żadnego znaczenia ani sensu proszę nie zwraca na mnie uwagi ale mimio to chciałem gorąco z tego miejsca pozdrowić moją mamę oraz tatę! Bez nich nie byłbym tu gdzie jestem."
+  :RARecipePreparation/stepNo 7
+  :RARecipePreparation/recipe "Puchar lodowy"}]

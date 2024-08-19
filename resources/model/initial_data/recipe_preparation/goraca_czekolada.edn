@@ -1,0 +1,28 @@
+[{:RARecipePreparation/stepDescription
+  "Zagtuj mleko w rondlu"
+  :RARecipePreparation/stepNo 1
+  :RARecipePreparation/recipe "Gorąca czekolada"}
+{:RARecipePreparation/stepDescription
+  "Dodaj cukier i mieszaj aż do rozpuszczenia"
+  :RARecipePreparation/stepNo 2
+  :RARecipePreparation/recipe "Gorąca czekolada"}
+{:RARecipePreparation/stepDescription
+  "Czekoladę rozdrobnij i dodaj do mleka"
+  :RARecipePreparation/stepNo 3
+  :RARecipePreparation/recipe "Gorąca czekolada"}
+{:RARecipePreparation/stepDescription
+  "Cały czas mieszaj aż do momentu rozpuszczenia czekolady"
+  :RARecipePreparation/stepNo 4
+  :RARecipePreparation/recipe "Gorąca czekolada"}
+{:RARecipePreparation/stepDescription
+  "Przelej do naczynia w którym będzie służyć"
+  :RARecipePreparation/stepNo 5
+  :RARecipePreparation/recipe "Gorąca czekolada"}
+{:RARecipePreparation/stepDescription
+  "Na koniec udekoruj bitą śmietaną"
+  :RARecipePreparation/stepNo 6
+  :RARecipePreparation/recipe "Gorąca czekolada"}
+{:RARecipePreparation/stepDescription
+  "Ciesz się z radości na twarzach twoich gości"
+  :RARecipePreparation/stepNo 7
+  :RARecipePreparation/recipe "Gorąca czekolada"}]
