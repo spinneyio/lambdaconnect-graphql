@@ -7,7 +7,7 @@ TODO: Build status
 ## Instalation
 
 ```clojure
-[io.spinney/lambdaconnect-graphql "0.1.0"]
+[io.spinney/lambdaconnect-graphql "0.1.1"]
 ```
 
 ## Features
