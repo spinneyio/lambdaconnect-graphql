@@ -249,7 +249,8 @@
 (deftest new-entity
   (let [now (u/now)
         entity {:RAMenu/name "Menu"
-                :db/id "menu"}
+                :db/id "menu"
+                :RAMenu/booleanFlag false}
         new-entity-with-all-data (u/new-entity config/config "RAMenu" now entity true)
         new-entity-without-all-data (u/new-entity config/config "RAMenu" now entity)
         photo-entity {:upload/s3-upload-key "photo-key"
@@ -259,6 +260,7 @@
     (is (= {:RAMenu/name "Menu"
             :RAMenu/archived false
             :RAMenu/isMainMenuOfARestaurant false
+            :RAMenu/booleanFlag false
             :app/active true
             :app/createdAt now
             :app/updatedAt now

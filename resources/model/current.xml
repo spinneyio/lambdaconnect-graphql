@@ -187,6 +187,7 @@
             </userInfo>
         </attribute>
         <attribute name="archived" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="booleanFlag" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="isMainMenuOfARestaurant" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="name" attributeType="String" maxValueString="100"/>

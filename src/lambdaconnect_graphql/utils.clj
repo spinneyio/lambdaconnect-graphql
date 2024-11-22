@@ -111,7 +111,7 @@
    and true otherwise. Lower arities are for convenience only."
   ([config entity-name now data] (new-entity config entity-name now data false))
   ([{:keys [default-values]} entity-name now data take-all-data?]
-   (let [data (->> data (filter (fn [[_ v]] v)) (into {}))]
+   (let [data (->> data (filter (fn [[_ v]] (some? v))) (into {}))]
      (merge (if entity-name
               (let [default-attributes (get default-values entity-name)
                     default-keys (set (keys default-attributes))
