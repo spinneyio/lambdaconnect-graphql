@@ -46,16 +46,16 @@
 
 (deftest validate-value
   (testing "String length"
-    (is (every? nil? (mutation/validate-value config/config "RAPrice" nil "currency" "YES")))
-    (is (some some? (mutation/validate-value config/config "RAPrice" nil "currency" "NO")))
-    (is (some some? (mutation/validate-value config/config "RAPrice" nil "currency" "NOPE"))))
+    (is (every? nil? (mutation/validate-value (:entities-by-name config/config) "RAPrice" nil "currency" "YES")))
+    (is (some some? (mutation/validate-value (:entities-by-name config/config) "RAPrice" nil "currency" "NO")))
+    (is (some some? (mutation/validate-value (:entities-by-name config/config) "RAPrice" nil "currency" "NOPE"))))
   (testing "Regex"
-    (is (every? nil? (mutation/validate-value config/config "RARestaurant" nil "unitSystem" "metric")))
-    (is (some some? (mutation/validate-value config/config "RARestaurant" nil "unitSystem" "quack"))))
+    (is (every? nil? (mutation/validate-value (:entities-by-name config/config) "RARestaurant" nil "unitSystem" "metric")))
+    (is (some some? (mutation/validate-value (:entities-by-name config/config) "RARestaurant" nil "unitSystem" "quack"))))
   (testing "Min and max"
-    (is (every? nil? (mutation/validate-value config/config "RAVatPercentage" nil "percentage" 23)))
-    (is (some some? (mutation/validate-value config/config "RAVatPercentage" nil "percentage" -23)))
-    (is (some some? (mutation/validate-value config/config "RAVatPercentage" nil "percentage" 230)))))
+    (is (every? nil? (mutation/validate-value (:entities-by-name config/config) "RAVatPercentage" nil "percentage" 23)))
+    (is (some some? (mutation/validate-value (:entities-by-name config/config) "RAVatPercentage" nil "percentage" -23)))
+    (is (some some? (mutation/validate-value (:entities-by-name config/config) "RAVatPercentage" nil "percentage" 230)))))
 
 (deftest add-and-remove
   (is (f/ok? (mutation/add-and-remove (add-remove-map nil nil))))
