@@ -87,33 +87,34 @@
       (merge-with concat @push-input {(:name entity) (list parsed-data)}))))
 
 (defn validate-value
-  [{:keys [entities-by-name]} entity uuid attribute value]
-  (when value
-    (concat
-     (when-let [{:keys [regular-expression min-value max-value type]}
-                (get-in entities-by-name [entity :attributes (name attribute)])]
-       [(when (and regular-expression
-                   (or (not (string? value))
-                       (not (re-matches regular-expression value))))
-          (str entity "/" attribute " (uuid: " uuid "): value must match regex " regular-expression "."))
-        (when min-value
-          (case type
-            :db.type/string
-            (when (< (count value) min-value)
-              (str entity "/" attribute " (uuid: " uuid "): value must have at least " min-value " characters."))
-            :db.type/long
-            (when (< value min-value)
-              (str entity "/" attribute " (uuid: " uuid "): value must be at least " min-value "."))
-            nil))
-        (when max-value
-          (case type
-            :db.type/string
-            (when (> (count value) max-value)
-              (str entity "/" attribute " (uuid: " uuid "): value must have at most " min-value " characters."))
-            :db.type/long
-            (when (> value max-value)
-              (str entity "/" attribute " (uuid: " uuid "): value must be at most " min-value "."))
-            nil))]))))
+  [entities-by-name entity uuid attribute value]
+  (let [attribute (name attribute)]
+    (when value
+      (concat
+       (when-let [{:keys [regular-expression min-value max-value type]}
+                  (get-in entities-by-name [entity :attributes attribute])]
+         [(when (and regular-expression
+                     (or (not (string? value))
+                         (not (re-matches regular-expression value))))
+            (str entity "/" attribute " (uuid: " uuid "): value must match regex " regular-expression "."))
+          (when min-value
+            (case type
+              :db.type/string
+              (when (< (count value) min-value)
+                (str entity "/" attribute " (uuid: " uuid "): value must have at least " min-value " characters."))
+              :db.type/long
+              (when (< value min-value)
+                (str entity "/" attribute " (uuid: " uuid "): value must be at least " min-value "."))
+              nil))
+          (when max-value
+            (case type
+              :db.type/string
+              (when (> (count value) max-value)
+                (str entity "/" attribute " (uuid: " uuid "): value must have at most " min-value " characters."))
+              :db.type/long
+              (when (> value max-value)
+                (str entity "/" attribute " (uuid: " uuid "): value must be at most " min-value "."))
+              nil))])))))
 
 (defn add-datom
   "Datoms should have form [:db/{add,retract} n-identifier ...]"
