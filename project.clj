@@ -1,4 +1,4 @@
-(defproject io.spinney/lambdaconnect-graphql "0.1.1"
+(defproject io.spinney/lambdaconnect-graphql "0.1.2"
   :description "Integrating model with GraphQL"
   :url "http://github.com/spinneyio/lambdaconnect-graphql"
   :license {:name "EPL-2.0 OR GPL-2.0-or-later WITH Classpath-exception-2.0"
